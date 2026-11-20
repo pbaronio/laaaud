@@ -715,6 +715,12 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
     }
   });
 
+  /* Navigazione: dalla Scena 3 in poi sparisce verso l'alto scorrendo giu', torna appena si scorre su */
+  const navEl = $('.nav'); let navHidden = false;
+  const navShow = show => { if (show === !navHidden) return; navHidden = !show; gsap.to(navEl, {yPercent: show ? 0 : -140, duration: show ? .5 : .4, ease: show ? 'expo.out' : 'power2.in', overwrite: true}); };
+  ScrollTrigger.create({trigger: '#citta', start: 'top top', end: 'max',
+    onUpdate: st => navShow(st.direction < 0 || menu.classList.contains('open')), onLeaveBack: () => navShow(true)});
+
   /* Uscita della Scena 2: la Scena 3 ci scorre sopra */
   const exitST = {trigger: '#citta', start: 'top bottom', end: 'top top', scrub: true};
   gsap.to('#heroVeil', {opacity: .55, ease: 'none', scrollTrigger: exitST});
