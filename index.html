@@ -136,6 +136,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sv-nav button{text-align:left;display:flex;gap:.7vw;align-items:baseline;font-size:max(15px,1.18vw);font-weight:700;opacity:.35;transition:opacity .4s}
 .sv-nav button b{font-family:var(--display);font-weight:400;font-size:max(20px,1.67vw);line-height:normal}
 .sv-nav button.on{opacity:1}
+.sv-lab-m{display:none}
+.sv-nav .sv-lab{margin-bottom:1.1vw;white-space:nowrap}
+.sv-nav .sv-lab::before{content:"";display:inline-block;width:8px;height:8px;background:var(--arancio);margin-right:8px;vertical-align:1px}
 .sv-bar{height:2px;background:#D8CCC2;margin-top:1.2vw;position:relative;width:11.8vw}
 .sv-bar i{position:absolute;inset:0;background:var(--prugna);transform-origin:0 50%;transform:scaleX(0)}
 .sv-body{position:absolute;left:25.8vw;top:-.83vw;width:35.6vw;display:grid}
@@ -229,6 +232,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
   .sv-stage{height:auto;padding:calc(var(--navh) + 6vh) var(--m) 8vh}
   .sv-wrap{position:static;transform:none;height:auto}
   .sv-nav,.sv-ph{display:none}
+  .sv-lab-m{display:block;margin-bottom:6vw}.sv-lab-m::before{content:"";display:inline-block;width:8px;height:8px;background:var(--arancio);margin-right:8px;vertical-align:1px}
   .sv-body{position:static;width:auto;gap:9vh}
   .sv-item{grid-area:auto;visibility:visible}
   .sv-item h3{font-size:13vw}.sv-item .d,.sv-item ul{width:auto}
@@ -388,11 +392,13 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
 <section class="servizi" id="servizi" data-bg="crema" aria-label="Servizi">
   <div class="sv-stage" id="svStage"><div class="sv-wrap">
     <nav class="sv-nav" aria-label="Servizi">
+      <span class="mono sv-lab">Servizi · scegli il tuo pacchetto</span>
       <button class="on"><b>01</b>Sul territorio</button>
       <button><b>02</b>Protagonista</button>
       <button><b>03</b>Campioni</button>
       <div class="sv-bar"><i id="svBar"></i></div>
     </nav>
+    <span class="mono sv-lab sv-lab-m" aria-hidden="true">Servizi · scegli il tuo pacchetto</span>
     <div class="sv-body">
       <article class="sv-item on" style="--ph:url(img/p2.jpg)">
         <span class="split"><h3>Creator sul territorio</h3></span>
