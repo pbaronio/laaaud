@@ -702,7 +702,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
     /* Scena 4 · La rete */
     const pins = $$('#map .pin');
     if (D) {
-      const r = gsap.timeline({scrollTrigger: {trigger: '#rete', start: 'top 40%', end: 'bottom 80%', scrub: .6}});
+      const r = gsap.timeline({scrollTrigger: {trigger: '#rete', start: 'top 80%', end: 'top 15%', scrub: .6}});
       r.from(pins, {scale: 0, y: 30, opacity: 0, transformOrigin: '50% 100%', stagger: {amount: 1.1, from: 'random'}, duration: .35, ease: 'back.out(2)'}, 0);
       $$('.rete .num b').forEach((b, k) => { const o = {v: 0}; b.textContent = '0'; r.to(o, {v: +b.dataset.to, duration: .9, ease: 'none', onUpdate: () => b.textContent = Math.round(o.v)}, k * .15); });
     } else gsap.from(pins, {scale: 0, opacity: 0, stagger: {amount: .9, from: 'random'}, duration: .5, ease: 'back.out(2)', scrollTrigger: {trigger: '#map', start: 'top 70%'}});
