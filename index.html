@@ -146,7 +146,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sv-item .split{overflow:hidden;display:block}
 .sv-item .split > *{display:block}
 .sv-ph{position:absolute;left:67.1vw;top:0;width:30.7vw;height:38.3vw}
-.sv-card{position:absolute;inset:0;overflow:hidden;will-change:transform;box-shadow:0 30px 60px -35px rgba(34,2,39,.55)}
+.sv-card{position:absolute;inset:0;will-change:transform}
+.sv-card .bgc{position:absolute;inset:0;transform:translate(-1.1vw,1.1vw)}
+.sv-card .im{position:absolute;inset:0;overflow:hidden}
+.sv-card:nth-child(1) .bgc{background:var(--arancio)}
+.sv-card:nth-child(2) .bgc{background:var(--lilla)}
+.sv-card:nth-child(3) .bgc{background:var(--prugna)}
 .btn{--b1:var(--arancio);--b1t:var(--prugna);--b2:var(--prugna);--b2t:var(--crema);display:inline-block;white-space:nowrap;height:clamp(34px,2.85vw,41px);perspective:700px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.25vw,32px);line-height:.9;letter-spacing:-.03em;background:none;border:0;padding:0;cursor:pointer;transform:rotate(-.75deg)}
 .btn .blk3{display:grid;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.65,.05,.36,1)}
 .btn .f{grid-area:1/1;display:flex;align-items:center;gap:10px;height:100%;padding:0 .42em;backface-visibility:hidden}
@@ -362,7 +367,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <div class="meta"><a class="btn" href="#ctas" data-open-panel>let’s start</a><span>a partire da € —</span></div>
       </article>
     </div>
-    <div class="sv-ph" aria-hidden="true"><figure class="sv-card"><img src="img/p2.jpg" alt=""></figure><figure class="sv-card"><img src="img/p4.jpg" alt=""></figure><figure class="sv-card"><img src="img/p7.jpg" alt=""></figure></div>
+    <div class="sv-ph" aria-hidden="true"><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/p2.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/p4.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/p7.jpg" alt=""></span></figure></div>
   </div></div>
 </section>
 
