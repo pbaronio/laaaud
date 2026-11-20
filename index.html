@@ -147,8 +147,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sv-item .split > *{display:block}
 .sv-ph{position:absolute;left:67.1vw;top:0;width:30.7vw;height:38.3vw}
 .sv-card{position:absolute;inset:0;will-change:transform}
-.sv-card .bgc{position:absolute;inset:0;transform:translate(-1.1vw,1.1vw)}
-.sv-card .im{position:absolute;inset:0;overflow:hidden}
+.sv-card .bgc{position:absolute;inset:0;border-radius:4px;transform:translate(-.42vw,-.42vw)}
+.sv-card .im{position:absolute;inset:0;overflow:hidden;border-radius:4px}
 .sv-card:nth-child(1) .bgc{background:var(--arancio)}
 .sv-card:nth-child(2) .bgc{background:var(--lilla)}
 .sv-card:nth-child(3) .bgc{background:var(--prugna)}
@@ -649,7 +649,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo2{background-color:rgba(34,2,
 
   /* Scena 6 · stato del servizio, foto a pila con passaggio a trail */
   const svItems = $$('.sv-item'), svBtns = $$('.sv-nav button'), svCards = $$('.sv-card');
-  const slot = r => ({x: `${-r * 6}%`, y: `${r * 2}%`, scale: 1 - r * .06, rotation: r * 1.2, zIndex: 3 - r});
+  const slot = r => ({x: `${-r * 6}%`, y: `${r * 2}%`, scale: 1 - r * .06, rotation: -r * 1.2, zIndex: 3 - r}); // in Figma la rotazione positiva e' antioraria: qui va col segno meno
   svCards.forEach((c, i) => gsap.set(c, {...slot(i), transformOrigin: '0% 50%'}));
   let svK = 0;
   function svSet(k) { if (k === svK) return; const prevK = svK; svK = k;
