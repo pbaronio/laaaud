@@ -191,6 +191,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .panel .close{position:absolute;right:24px;top:24px;font-size:28px}
 .panel .ok{display:none;color:var(--arancio);font-weight:500}.panel .ok.show{display:block}
 
+
+/* ---------- Cursore (Osmo · Basic Custom Cursor, in versione brand) ----------
+   Al posto del cerchio: un quadrato arancio seguito da due «eco» lilla e prugna che arrivano in ritardo,
+   come le forme impilate della branding Gummy. Su link, bottoni e [data-cursor] si allarga e si inclina. */
+.cursor{z-index:300;background-color:#FF5A29;border:1px solid #FF5A29;border-radius:0;width:1em;height:1em;transition:background-color .375s cubic-bezier(.625,.05,0,1),height .375s cubic-bezier(.625,.05,0,1),width .375s cubic-bezier(.625,.05,0,1),rotate .375s cubic-bezier(.625,.05,0,1),border-color .375s;position:fixed;inset:0% auto auto 0%;pointer-events:none}
+.cursor.cursor--echo1{z-index:299;background-color:var(--lilla);border-color:var(--lilla)}
+.cursor.cursor--echo2{z-index:298;background-color:var(--prugna);border-color:var(--crema)}
+body:has( a:hover) .cursor,
+body:has( button:hover) .cursor,
+body:has( [data-cursor]:hover) .cursor{width:3em;height:3em;background-color:rgba(255,90,41,.3);rotate:-6deg}
+body:has( a:hover) .cursor.cursor--echo1,
+body:has( button:hover) .cursor.cursor--echo1,
+body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,129,242,.35);rotate:4deg}
+body:has( a:hover) .cursor.cursor--echo2,
+body:has( button:hover) .cursor.cursor--echo2,
+body:has( [data-cursor]:hover) .cursor.cursor--echo2{background-color:rgba(34,2,39,.25);rotate:-2deg}
+@media (hover: none) and (pointer: coarse){.cursor{display:none}}
+
 @media (max-width:860px){
   .nav .badge{margin-top:12px}.nav .menu-btn{margin-top:14px}
   .menu{grid-template-columns:1fr}.menu figure{display:none}
@@ -218,6 +236,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 </style>
 </head>
 <body>
+
+<!-- CURSORE -->
+<div class="cursor cursor--echo2" aria-hidden="true"></div><div class="cursor cursor--echo1" aria-hidden="true"></div><div class="cursor" data-cursor-main aria-hidden="true"></div>
 
 <!-- LOADER -->
 <div data-logo-loader-init class="logo-loader" aria-hidden="true">
@@ -514,7 +535,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     const M = typeof Matter !== 'undefined' ? Matter : null;
     const make = () => { world.innerHTML = ''; const n = isM() ? 7 : 13;
       return CITIES.slice(0, n).map((c, i) => { const el = document.createElement('div'); const tz = i % 3 === 1;
-        el.className = 'blk ' + ['p', 'l', 'p', 'a', 'l'][i % 5] + (tz ? ' tz' : ''); el.textContent = c; world.appendChild(el); return {el, tz}; }); };
+        el.setAttribute('data-cursor', ''); el.className = 'blk ' + ['p', 'l', 'p', 'a', 'l'][i % 5] + (tz ? ' tz' : ''); el.textContent = c; world.appendChild(el); return {el, tz}; }); };
     if (!M || reduce || !G) { sec.classList.add('static'); make().forEach(b => { if (b.tz) b.el.style.clipPath = 'polygon(12% 0,88% 0,100% 100%,0 100%)'; }); return; }
     const {Engine, Bodies, Body, Composite, Constraint, Query, Sleeping} = M;
     const engine = Engine.create({enableSleeping: false, positionIterations: 10, velocityIterations: 8}); engine.gravity.y = 1.4;
@@ -558,7 +579,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     let lw = innerWidth; addEventListener('resize', () => { if (Math.abs(innerWidth - lw) < 40) { buildWalls(); return; } lw = innerWidth; buildWalls(); const was = dropped; dropped = false; if (was) drop(); else make(); });
   }
 
+
+  /* ---------- Osmo · Basic Custom Cursor (versione brand: quadrato + due eco in ritardo) ---------- */
+  function initBasicCustomCursor() {
+    gsap.set('.cursor', {xPercent: -50, yPercent: -50});
+    const lag = [['[data-cursor-main]', .6], ['.cursor--echo1', .85], ['.cursor--echo2', 1.1]].map(([sel, d]) => ({
+      xTo: gsap.quickTo(sel, 'x', {duration: d, ease: 'power3'}), yTo: gsap.quickTo(sel, 'y', {duration: d, ease: 'power3'})}));
+    window.addEventListener('mousemove', e => { lag.forEach(l => { l.xTo(e.clientX); l.yTo(e.clientY); }); });
+  }
+
   initLoader(); initTrail();
+  if (G && matchMedia('(hover: hover)').matches) initBasicCustomCursor();
   if (!G) { fitCtas(); initCities(); return; }
 
   /* Lenis */
