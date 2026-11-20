@@ -76,7 +76,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero .echo,.hero .photo{position:absolute;overflow:hidden;border-radius:4px}
 .hero .echo{z-index:3}
 .hero .photo{z-index:4}
-.hero .photo img{transform:scale(1.12);will-change:transform}
+.hero .photo img{will-change:transform}
 .hero .veil{position:absolute;inset:0;z-index:8;background:var(--prugna);opacity:0;pointer-events:none}
 
 /* ---------- SCENA 3 · le citta' cadono (rif. footer SuperHi) ---------- */
@@ -91,7 +91,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .blk.l{background:var(--lilla);color:var(--prugna)}
 .blk.a{background:var(--arancio);color:var(--prugna)}
 .blk.tz{padding:0 1.6em}
-.citta .hint{position:absolute;right:var(--m);bottom:var(--m);z-index:3;opacity:.5;pointer-events:none}
+.citta .hint{position:absolute;right:var(--m);bottom:var(--m);z-index:4;pointer-events:none}
 .citta.static .world{display:flex;flex-wrap:wrap;align-content:flex-end;gap:8px;padding:var(--m)}
 .citta.static .blk{position:relative;visibility:visible}
 
@@ -703,7 +703,6 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
       .set(big, {autoAlpha: 0}, 1.02);
     echoes.forEach((e, k) => ht.fromTo(e, echoSet(k), {...frontSet, ease: 'power2.in', duration: .35}, 1 + (3 - k) * .03));
     ht.fromTo(photo, {...frontSet, borderRadius: 4}, {left: 0, top: () => g.shift, width: () => innerWidth, height: () => innerHeight, borderRadius: 0, ease: 'power2.inOut', duration: 1}, 1.3)
-      .fromTo('#heroPhoto img', {scale: 1.12}, {scale: 1, ease: 'none', duration: 1}, 1.3)
       .to({}, {duration: .3});
 
     /* Scena 4 · La rete */
@@ -739,7 +738,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
   const secs = $$('[data-bg]');
   secs.forEach((sec, k) => { if (!k) return;
     const a = C[secs[k - 1].dataset.bg], b = C[sec.dataset.bg]; if (a === b) return;
-    const paint = c => { document.body.style.backgroundColor = c; $('#citta').style.backgroundColor = c; };
+    const paint = c => { document.body.style.backgroundColor = c; }; // la Scena 3 ha il suo crema fisso: non va mai ridipinta
     if (k === 1 || sec.id === 'rete') { // cambi netti: Scena 2 → 3 (la crema scorre sopra la foto) e Scena 3 → La rete (gia' prugna)
       ScrollTrigger.create({trigger: sec, start: 'top top', onEnter: () => document.body.style.backgroundColor = b, onLeaveBack: () => document.body.style.backgroundColor = a}); return; }
     // sfumato guidato dallo scroll, senza toccare il fondo quando la sezione e' lontana
