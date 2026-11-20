@@ -513,7 +513,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     if (!M || reduce || !G) { sec.classList.add('static'); make().forEach(b => { if (b.tz) b.el.style.clipPath = 'polygon(12% 0,88% 0,100% 100%,0 100%)'; }); return; }
     const {Engine, Bodies, Body, Composite, Constraint, Query, Sleeping} = M;
     const engine = Engine.create({enableSleeping: false, positionIterations: 10, velocityIterations: 8}); engine.gravity.y = 1.4;
-    let blocks = [], walls = [], dropped = false, active = false, drag = null;
+    let blocks = [], walls = [], dropped = false, active = false, drag = null, calls = [];
     const SLOPE = .14;
     const buildWalls = () => { walls.forEach(w => Composite.remove(engine.world, w)); const W = sec.clientWidth, H = sec.clientHeight, t = 200;
       walls = [Bodies.rectangle(W / 2, H + t / 2, W * 3, t, {isStatic: true}), Bodies.rectangle(-t / 2, H / 2 - 1500, t, H + 3000, {isStatic: true}), Bodies.rectangle(W + t / 2, H / 2 - 1500, t, H + 3000, {isStatic: true})];
@@ -538,15 +538,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     const release = () => { if (drag) { Composite.remove(engine.world, drag); drag = null; } };
     addEventListener('pointerup', release); addEventListener('pointercancel', release);
     // i corpi fisici si misurano solo al momento della caduta, a font caricati: cosi' combaciano col disegno e non restano spazi
-    const drop = () => { if (dropped) return; dropped = true; build(); blocks.forEach((b, i) => { gsap.delayedCall(i * .32 + Math.random() * .12, () => { Composite.add(engine.world, b.body); b.el.style.visibility = 'visible'; }); }); };
+    const drop = () => { if (dropped) return; dropped = true; build(); calls.forEach(c => c.kill()); calls = blocks.map((b, i) => gsap.delayedCall(i * .32 + Math.random() * .12, () => { Composite.add(engine.world, b.body); b.el.style.visibility = 'visible'; })); };
+    // quando la sezione esce tutta dallo schermo si azzera: rientrando, le citta' ricadono da capo
+    const reset = () => { if (!dropped) return; calls.forEach(c => c.kill()); calls = []; if (drag) { Composite.remove(engine.world, drag); drag = null; }
+      blocks.forEach(b => Composite.remove(engine.world, b.body)); blocks = []; dropped = false; make(); };
     const render = () => { blocks.forEach(({el, body, w, h, off}) => { const c = Math.cos(body.angle), s = Math.sin(body.angle);
       const cx = body.position.x + off.x * c - off.y * s, cy = body.position.y + off.x * s + off.y * c;
       el.style.transform = `translate(${cx - w / 2}px, ${cy - h / 2}px) rotate(${body.angle}rad)`; }); };
     let acc = 0; const STEP = 1000 / 120;
     gsap.ticker.add((t, dt) => { if (!active || !dropped) return; acc = Math.min(acc + dt, 100); while (acc >= STEP) { Engine.update(engine, STEP); acc -= STEP; } render(); });
-    new IntersectionObserver(es => es.forEach(e => active = e.isIntersecting), {threshold: 0}).observe(sec);
+    new IntersectionObserver(es => es.forEach(e => { active = e.isIntersecting; if (!active) reset(); }), {threshold: 0}).observe(sec);
     buildWalls(); make();
-    ScrollTrigger.create({trigger: sec, start: 'top 55%', once: true, onEnter: drop});
+    ScrollTrigger.create({trigger: sec, start: 'top 55%', end: 'bottom 45%', onEnter: drop, onEnterBack: drop});
     let lw = innerWidth; addEventListener('resize', () => { if (Math.abs(innerWidth - lw) < 40) { buildWalls(); return; } lw = innerWidth; buildWalls(); const was = dropped; dropped = false; if (was) drop(); else make(); });
   }
 
