@@ -3,19 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Laaaud · Home v6</title>
+<title>Laaaud</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Laaaud v6 — sequenze da Figma (pagina «↳ Ui Design», sezione «Scene»).
-   Loader → Scena 1 (logo grande, testo, pila di foto) → Scena 2 (foto piena, logo nel menu)
-   → Scena 3 (citta' che cadono) → 4 La rete → 5 Da vicino → 6 Servizi → 7 CTA + footer.
-   Vina Sans solo monster/display (accentate → apostrofo); ABC Areal per il testo. */
 @font-face{font-family:"Vina Sans";src:url(fonts/VinaSans-Regular.ttf) format("truetype");font-display:swap}
 @font-face{font-family:"ABC Areal";src:url(fonts/ABCAreal-Regular.ttf) format("truetype");font-weight:400;font-display:swap}
 @font-face{font-family:"ABC Areal";src:url(fonts/ABCAreal-Medium.ttf) format("truetype");font-weight:500;font-display:swap}
 @font-face{font-family:"ABC Areal";src:url(fonts/ABCAreal-Bold.ttf) format("truetype");font-weight:700;font-display:swap}
-/* Inter: usato nel Figma per il link «Sei un creator?» e per le frecce delle CTA */
 :root{
   --prugna:#220227; --crema:#FFF1E0; --arancio:#FF5A29; --lilla:#A981F2;
   --display:"Vina Sans","Impact","Arial Narrow",sans-serif;
@@ -38,16 +33,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .mono{font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.02em;line-height:normal;text-transform:uppercase}
 .mono .orig{text-transform:none}
 
-/* ---------- LOADER (Osmo · Logo Stack Loader) ---------- */
-.logo-loader{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;perspective:40em}
-.logo-loader__bg{position:absolute;inset:0;z-index:0;background:var(--prugna);transform-origin:50% 0%}
-.logo-loader__stack{position:relative;z-index:1;display:grid;width:16em;transform-style:preserve-3d;opacity:0}
-.logo-loader__logo{grid-column:1;grid-row:1}
-.logo-loader__logo svg{width:100%;height:auto}
-.logo-loader__track{position:absolute;bottom:3.5em;left:0;right:0;z-index:1;width:8em;height:.25em;margin:0 auto;overflow:hidden;border-radius:100em;background:rgba(255,241,224,.15)}
-.logo-loader__bar{position:absolute;inset:0;background:var(--crema);transform-origin:0% 50%;transform:scaleX(0)}
+.ld{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;perspective:40em}
+.ld__bg{position:absolute;inset:0;z-index:0;background:var(--prugna);transform-origin:50% 0%}
+.ld__stack{position:relative;z-index:1;display:grid;width:16em;transform-style:preserve-3d;opacity:0}
+.ld__logo{grid-column:1;grid-row:1}
+.ld__logo svg{width:100%;height:auto}
+.ld__track{position:absolute;bottom:3.5em;left:0;right:0;z-index:1;width:8em;height:.25em;margin:0 auto;overflow:hidden;border-radius:100em;background:rgba(255,241,224,.15)}
+.ld__bar{position:absolute;inset:0;background:var(--crema);transform-origin:0% 50%;transform:scaleX(0)}
 
-/* ---------- NAV (Figma Scena 2: logo in alto a sinistra, MENU a destra) ---------- */
 .nav{position:fixed;left:0;right:0;top:0;z-index:95;display:flex;justify-content:space-between;align-items:flex-start;padding:0 1.39vw;pointer-events:none}
 .nav > *{pointer-events:auto}
 .nav .badge{display:block;margin-top:2.3vw;height:max(40px,5vw);aspect-ratio:1059/462;transform:rotate(.7deg);visibility:hidden}
@@ -61,7 +54,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .menu nav a span{font-family:var(--mono);font-size:14px}
 .menu figure{overflow:hidden}
 
-/* ---------- SCENA 1 → 2 (hero) ---------- */
 .hero{position:relative;height:100svh;overflow:hidden}
 .hero .hin{position:absolute;left:0;right:0;top:0;height:200%;will-change:transform}
 .hero .big{position:absolute;left:0;top:0;z-index:6;transform-origin:0 0;will-change:transform}
@@ -79,7 +71,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero .photo img{will-change:transform}
 .hero .veil{position:absolute;inset:0;z-index:8;background:var(--prugna);opacity:0;pointer-events:none}
 
-/* ---------- SCENA 3 · le citta' cadono (rif. footer SuperHi) ---------- */
 .citta{position:relative;z-index:2;height:100svh;min-height:620px;background:var(--crema);border-radius:28px 28px 0 0;overflow:hidden}
 .citta .row{position:relative;z-index:3;display:grid;grid-template-columns:calc(50.7vw - var(--m)) 1fr auto;padding:calc(var(--navh) + var(--m) + 4vh) var(--m) 0;pointer-events:none}
 .citta .row span:nth-child(1)::before{content:"";display:inline-block;width:8px;height:8px;background:var(--arancio);margin-right:8px;vertical-align:1px}
@@ -95,7 +86,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .citta.static .world{display:flex;flex-wrap:wrap;align-content:flex-end;gap:8px;padding:var(--m)}
 .citta.static .blk{position:relative;visibility:visible}
 
-/* ---------- SCENA 4 · La rete ---------- */
 .rete{position:relative;color:var(--crema);background:var(--prugna)}
 .rete .stage{position:relative;height:78vw;min-height:100svh}
 .rete .left{position:absolute;left:1.39vw;top:8.33vw;bottom:0;width:45vw}
@@ -110,7 +100,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .pin img{border-radius:2px}
 .pin::after{content:"";position:absolute;left:50%;bottom:-6px;width:10px;height:10px;background:var(--crema);transform:translateX(-50%) rotate(45deg);z-index:-1}
 
-/* ---------- SCENA 5 · Da vicino (Osmo · Rotating Image Trail) ---------- */
 .vicino{position:relative;height:78vw;min-height:100svh;overflow:hidden;display:grid;place-items:center;text-align:center;touch-action:pan-y}
 .vicino .t{position:relative;z-index:1000;pointer-events:none;color:var(--prugna);width:44.4vw;height:16.7vw;display:grid;place-items:center;isolation:isolate;transform:rotate(.6deg)}
 .vicino .t .bk{position:absolute;inset:0;z-index:-1}
@@ -118,18 +107,17 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .vicino .t .bk:nth-child(2){background:var(--arancio)}
 .vicino .t .bk:nth-child(3){background:var(--crema)}
 .vicino .t h2{font-family:var(--display);font-weight:400;font-size:6.25vw;line-height:.95;letter-spacing:-.035em;width:38.9vw;margin:0}
-.vicino [data-trail-area]{z-index:1;isolation:isolate}
-.rotating-image-trail{width:100%;height:100%;position:absolute;inset:0}
-.rotating-image-trail__collection{opacity:0;pointer-events:none}
-.rotating-image-trail__list{gap:1em;flex-flow:wrap;display:flex}
-.rotating-image-trail__item{z-index:10;pointer-events:none;user-select:none}
-.rotating-image-trail__card{aspect-ratio:158/211;width:11vw;min-width:90px;position:relative;overflow:hidden}
-.rotating-image-trail__card-img{object-fit:cover;width:100%;height:100%;display:block;position:absolute;inset:0}
+.vicino [data-trail]{z-index:1;isolation:isolate}
+.trail{width:100%;height:100%;position:absolute;inset:0}
+.trail__set{opacity:0;pointer-events:none}
+.trail__list{gap:1em;flex-flow:wrap;display:flex}
+.trail__item{z-index:10;pointer-events:none;user-select:none}
+.trail__card{aspect-ratio:158/211;width:11vw;min-width:90px;position:relative;overflow:hidden}
+.trail__img{object-fit:cover;width:100%;height:100%;display:block;position:absolute;inset:0}
 [data-trail-item="hidden"]{transform:translate(-50%,-50%) scale(0) rotate(-20deg);position:absolute}
 [data-trail-item="visible"]{transform:translate(-50%,-50%) scale(1) rotate(.001deg);transition:transform .4s cubic-bezier(.625,.05,0,1);position:absolute}
 [data-trail-item="transition-out"]{transform:translate(-50%,-50%) scale(0) rotate(180deg);transition:transform .8s cubic-bezier(.625,0,.875,0);position:absolute}
 
-/* ---------- SCENA 6 · Servizi ---------- */
 .servizi{position:relative}
 .sv-stage{position:relative;height:100svh}
 .sv-wrap{position:absolute;left:0;right:0;top:50%;height:38.3vw;transform:translateY(-50%)}
@@ -140,7 +128,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sv-nav button b{font-family:var(--display);font-weight:400;font-size:max(18px,1.53vw);line-height:normal;text-transform:none;color:#fff;opacity:.35;transition:opacity .4s}
 .sv-nav button.on{color:#fff}.sv-nav button.on b{opacity:1}
 .sv-lab-m{display:none;font-family:var(--text)!important;font-weight:700;letter-spacing:0}
-.sv-nav .sv-lab{margin-bottom:1.4vw;font-family:var(--text);font-size:max(13px,1.04vw);font-weight:700;letter-spacing:0;text-transform:uppercase;white-space:nowrap}
+.sv-nav .sv-lab{margin-bottom:.45vw;font-family:var(--text);font-size:max(13px,1.04vw);font-weight:700;letter-spacing:0;text-transform:uppercase;white-space:nowrap}
 
 .sv-bar{height:2px;background:#D8CCC2;margin-top:1.2vw;position:relative;width:11.8vw}
 .sv-bar i{position:absolute;inset:0;background:var(--prugna);transform-origin:0 50%;transform:scaleX(0)}
@@ -161,40 +149,38 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sv-card:nth-child(1) .bgc{background:var(--lilla)}
 .sv-card:nth-child(2) .bgc{background:var(--arancio)}
 .sv-card:nth-child(3) .bgc{background:var(--prugna)}
-/* ---------- Osmo · Button 015 (colori Laaaud: parte arancio, passa dal lilla, arriva al prugna) ---------- */
 :root{
-  --button-015-color:#220227;
-  --button-015-color-background:#FF5A29;
-  --button-015-hover-color:#FFF1E0;
-  --button-015-between-color-background:#A981F2;
-  --button-015-hover-color-background:#220227;
-  --button-015-color-focus:#220227;
-  --button-015-border-radius:2.5em;
-  --button-015-padding:.42em 1.15em .48em;
-  --button-015-focus-inset:-.125em;
-  --button-015-click-scale:.955 .925;
-  --button-015-ease-click:cubic-bezier(.4,0,.2,1);
-  --button-015-ease-hover:cubic-bezier(.19,.69,.33,1.33);
-  --button-015-ease-hover-swift-out:cubic-bezier(.19,.69,.33,1);
-  --button-015-ease-hover-soft-out:cubic-bezier(.215,.61,.355,1);
-  --button-015-ease-focus:cubic-bezier(.32,.72,0,1);
+  --pill-color:#220227;
+  --pill-color-background:#FF5A29;
+  --pill-hover-color:#FFF1E0;
+  --pill-between-color-background:#A981F2;
+  --pill-hover-color-background:#220227;
+  --pill-color-focus:#220227;
+  --pill-border-radius:2.5em;
+  --pill-padding:.42em 1.15em .48em;
+  --pill-focus-inset:-.125em;
+  --pill-click-scale:.955 .925;
+  --pill-ease-click:cubic-bezier(.4,0,.2,1);
+  --pill-ease-hover:cubic-bezier(.19,.69,.33,1.33);
+  --pill-ease-hover-swift-out:cubic-bezier(.19,.69,.33,1);
+  --pill-ease-hover-soft-out:cubic-bezier(.215,.61,.355,1);
+  --pill-ease-focus:cubic-bezier(.32,.72,0,1);
 }
-.button-015{color:var(--button-015-color);-webkit-user-select:none;user-select:none;background-color:#0000;outline-style:none;place-content:center;place-items:center;padding:0;line-height:1;text-decoration:none;display:inline-grid;position:relative;-webkit-tap-highlight-color:transparent;transition:color .15s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click);font-family:var(--text);font-weight:500;font-size:clamp(16px,1.46vw,21px);white-space:nowrap;border:0;cursor:pointer}
-.button-015::after{content:'';display:block;position:absolute;inset:var(--button-015-focus-inset);border-radius:var(--button-015-border-radius);transition:box-shadow .3s var(--button-015-ease-focus);pointer-events:none;z-index:1}
-.button-015:is(:focus-visible)::after{box-shadow:0 0 0 .125em var(--button-015-color-focus)}
-.button-015:active{scale:var(--button-015-click-scale)}
-.button-015__bg{background-color:var(--button-015-color-background);border-radius:var(--button-015-border-radius);grid-area:1/1;width:calc(100% - 1px);height:calc(100% - 1px);padding:0}
-.button-015__bg-hover{border-radius:var(--button-015-border-radius);will-change:transform,clip-path;grid-area:1/1;width:calc(100% + .25em);height:calc(100% + .25em);padding:0;clip-path:inset(1.25em 1.25em 1.25em 1.25em round var(--button-015-border-radius));opacity:0}
-.button-015__bg-hover.is--first{background-color:var(--button-015-between-color-background);z-index:1;transition:clip-path .35s var(--button-015-ease-hover),opacity 0s var(--button-015-ease-hover-soft-out)}
-.button-015__bg-hover.is--second{background-color:var(--button-015-hover-color-background);z-index:2;transition:clip-path .35s .05s var(--button-015-ease-hover),opacity .1s .1s var(--button-015-ease-hover-soft-out)}
-.button-015__text{width:100%;height:100%;padding:var(--button-015-padding);z-index:3;grid-area:1/1}
+.pill{color:var(--pill-color);-webkit-user-select:none;user-select:none;background-color:#0000;outline-style:none;place-content:center;place-items:center;padding:0;line-height:1;text-decoration:none;display:inline-grid;position:relative;-webkit-tap-highlight-color:transparent;transition:color .15s var(--pill-ease-hover-soft-out),scale .15s var(--pill-ease-click);font-family:var(--text);font-weight:500;font-size:clamp(16px,1.46vw,21px);white-space:nowrap;border:0;cursor:pointer}
+.pill::after{content:'';display:block;position:absolute;inset:var(--pill-focus-inset);border-radius:var(--pill-border-radius);transition:box-shadow .3s var(--pill-ease-focus);pointer-events:none;z-index:1}
+.pill:is(:focus-visible)::after{box-shadow:0 0 0 .125em var(--pill-color-focus)}
+.pill:active{scale:var(--pill-click-scale)}
+.pill__bg{background-color:var(--pill-color-background);border-radius:var(--pill-border-radius);grid-area:1/1;width:calc(100% - 1px);height:calc(100% - 1px);padding:0}
+.pill__hover{border-radius:var(--pill-border-radius);will-change:transform,clip-path;grid-area:1/1;width:calc(100% + .25em);height:calc(100% + .25em);padding:0;clip-path:inset(1.25em 1.25em 1.25em 1.25em round var(--pill-border-radius));opacity:0}
+.pill__hover.is--first{background-color:var(--pill-between-color-background);z-index:1;transition:clip-path .35s var(--pill-ease-hover),opacity 0s var(--pill-ease-hover-soft-out)}
+.pill__hover.is--second{background-color:var(--pill-hover-color-background);z-index:2;transition:clip-path .35s .05s var(--pill-ease-hover),opacity .1s .1s var(--pill-ease-hover-soft-out)}
+.pill__text{width:100%;height:100%;padding:var(--pill-padding);z-index:3;grid-area:1/1}
 @media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
-  .button-015:is(:hover,:focus-visible),[data-hover]:is(:hover,:focus-visible) .button-015{color:var(--button-015-hover-color);transition:color .15s .2s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click)}
-  .button-015:is(:hover,:focus-visible) .button-015__bg-hover.is--first,[data-hover]:is(:hover,:focus-visible) .button-015 .button-015__bg-hover.is--first{clip-path:inset(.125em .125em .125em .125em round var(--button-015-border-radius));opacity:1;transition:clip-path .3s .05s var(--button-015-ease-hover-swift-out),opacity .1s .05s var(--button-015-ease-hover-soft-out)}
-  .button-015:is(:hover,:focus-visible) .button-015__bg-hover.is--second,[data-hover]:is(:hover,:focus-visible) .button-015 .button-015__bg-hover.is--second{clip-path:inset(.125em .125em .125em .125em round var(--button-015-border-radius));opacity:1;transition:clip-path .375s .2s var(--button-015-ease-hover),opacity .1s .2s var(--button-015-ease-hover-soft-out)}
+  .pill:is(:hover,:focus-visible),[data-hover]:is(:hover,:focus-visible) .pill{color:var(--pill-hover-color);transition:color .15s .2s var(--pill-ease-hover-soft-out),scale .15s var(--pill-ease-click)}
+  .pill:is(:hover,:focus-visible) .pill__hover.is--first,[data-hover]:is(:hover,:focus-visible) .pill .pill__hover.is--first{clip-path:inset(.125em .125em .125em .125em round var(--pill-border-radius));opacity:1;transition:clip-path .3s .05s var(--pill-ease-hover-swift-out),opacity .1s .05s var(--pill-ease-hover-soft-out)}
+  .pill:is(:hover,:focus-visible) .pill__hover.is--second,[data-hover]:is(:hover,:focus-visible) .pill .pill__hover.is--second{clip-path:inset(.125em .125em .125em .125em round var(--pill-border-radius));opacity:1;transition:clip-path .375s .2s var(--pill-ease-hover),opacity .1s .2s var(--pill-ease-hover-soft-out)}
 }
 
-/* ---------- SCENA 7 · CTA giganti + footer ---------- */
 .ctas a{display:flex;align-items:center;justify-content:space-between;gap:3vw;height:16vw;padding:0 2.4vw 0 2.5vw;font-family:var(--display);font-size:9.3vw;line-height:.85;letter-spacing:-.03em;transition:background .5s cubic-bezier(.23,1,.32,1),color .5s}
 .ctas a .t{white-space:nowrap}
 .ctas a:nth-child(1){background:var(--arancio)}
@@ -217,7 +203,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .footer .bot{position:absolute;left:1.18vw;right:2.1vw;top:50.1vw;display:flex;justify-content:space-between;font-size:14px;font-weight:400;opacity:.5}
 .footer-wrap__dark{opacity:0;pointer-events:none;background:#0d000f;position:absolute;inset:0}
 
-/* pannello form */
 .panel{position:fixed;inset:0;z-index:150;display:flex;justify-content:flex-end;pointer-events:none}
 .panel .veil{position:absolute;inset:0;background:rgba(34,2,39,.6);opacity:0;transition:opacity .5s}
 .panel .box{position:relative;width:min(560px,100%);height:100%;background:var(--crema);padding:6vh 40px;overflow:auto;transform:translateX(100%);transition:transform .7s cubic-bezier(.625,.05,0,1)}
@@ -231,34 +216,28 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .panel .close{position:absolute;right:24px;top:24px;font-size:28px}
 .panel .ok{display:none;color:var(--arancio);font-weight:500}.panel .ok.show{display:block}
 
+.dot{z-index:2000;background-color:#FF5A29;border:1px solid #FF5A29;border-radius:0;width:1em;height:1em;transition:background-color .375s cubic-bezier(.625,.05,0,1),height .375s cubic-bezier(.625,.05,0,1),width .375s cubic-bezier(.625,.05,0,1),rotate .375s cubic-bezier(.625,.05,0,1),border-color .375s;position:fixed;inset:0% auto auto 0%;pointer-events:none}
+.dot.dot--echo{z-index:1999;background-color:var(--lilla);border-color:var(--lilla)}
+body:has( a:hover) .dot,
+body:has( button:hover) .dot,
+body:has( [data-grow]:hover) .dot{width:1.9em;height:1.9em;background-color:rgba(255,90,41,.3);rotate:-6deg}
+body:has( a:hover) .dot.dot--echo,
+body:has( button:hover) .dot.dot--echo,
+body:has( [data-grow]:hover) .dot.dot--echo{background-color:rgba(169,129,242,.35);rotate:4deg}
+@media (hover: none) and (pointer: coarse){.dot{display:none}}
+body:has([data-tip-state="active"]) .dot,body:has([data-tip-state="active-edge"]) .dot{opacity:0}
+.dot{transition-property:background-color,height,width,rotate,border-color,opacity}
 
-/* ---------- Cursore (Osmo · Basic Custom Cursor, in versione brand) ----------
-   Al posto del cerchio: un quadrato arancio seguito da un'«eco» lilla che arrivano in ritardo,
-   come le forme impilate della branding Gummy. Su link, bottoni e [data-bcursor] si allarga e si inclina. */
-.bcursor{z-index:2000;background-color:#FF5A29;border:1px solid #FF5A29;border-radius:0;width:1em;height:1em;transition:background-color .375s cubic-bezier(.625,.05,0,1),height .375s cubic-bezier(.625,.05,0,1),width .375s cubic-bezier(.625,.05,0,1),rotate .375s cubic-bezier(.625,.05,0,1),border-color .375s;position:fixed;inset:0% auto auto 0%;pointer-events:none}
-.bcursor.bcursor--echo1{z-index:1999;background-color:var(--lilla);border-color:var(--lilla)}
-body:has( a:hover) .bcursor,
-body:has( button:hover) .bcursor,
-body:has( [data-bcursor]:hover) .bcursor{width:1.9em;height:1.9em;background-color:rgba(255,90,41,.3);rotate:-6deg}
-body:has( a:hover) .bcursor.bcursor--echo1,
-body:has( button:hover) .bcursor.bcursor--echo1,
-body:has( [data-bcursor]:hover) .bcursor.bcursor--echo1{background-color:rgba(169,129,242,.35);rotate:4deg}
-@media (hover: none) and (pointer: coarse){.bcursor{display:none}}
-/* mentre il cursore con la scritta e' attivo, i quadrati spariscono */
-body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) .bcursor{opacity:0}
-.bcursor{transition-property:background-color,height,width,rotate,border-color,opacity}
-
-/* ---------- Osmo · Scramble Text Cursor (colori Laaaud) ---------- */
-.cursor{z-index:2001;pointer-events:none;padding-top:1em;padding-left:.5em;padding-right:1em;position:fixed;top:0;left:0}
-.cursor-scramble{grid-column-gap:.5em;grid-row-gap:.5em;opacity:0;color:var(--prugna);background-color:var(--lilla);border-radius:.25em;justify-content:center;align-items:center;height:2em;padding-left:.75em;padding-right:.75em;display:flex;position:relative}
-.cursor-scramble__text{letter-spacing:-.01em;white-space:nowrap;font-size:.875em;font-weight:500}
-.cursor-scramble__chevron{color:var(--prugna);width:.375em}
+.tip{z-index:2001;pointer-events:none;padding-top:1em;padding-left:.5em;padding-right:1em;position:fixed;top:0;left:0}
+.tip__box{grid-column-gap:.5em;grid-row-gap:.5em;opacity:0;color:var(--prugna);background-color:var(--lilla);border-radius:.25em;justify-content:center;align-items:center;height:2em;padding-left:.75em;padding-right:.75em;display:flex;position:relative}
+.tip__text{letter-spacing:-.01em;white-space:nowrap;font-size:.875em;font-weight:500}
+.tip__arrow{color:var(--prugna);width:.375em}
 @media (hover: hover) and (pointer: fine){
-  [data-cursor] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease .1s;transform:translateX(0%) scale(1) rotate(.001deg)}
-  [data-cursor="active"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(0%) scale(1) rotate(.001deg)}
-  [data-cursor="active-edge"] .cursor-scramble{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(-100%) scale(1) rotate(.001deg)}
+  [data-tip-state] .tip__box{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease .1s;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-tip-state="active"] .tip__box{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(0%) scale(1) rotate(.001deg)}
+  [data-tip-state="active-edge"] .tip__box{transition:transform .4s cubic-bezier(.625,.05,0,1),opacity .2s ease 0s;opacity:1;transform:translateX(-100%) scale(1) rotate(.001deg)}
 }
-@media (hover: none) and (pointer: coarse){.cursor{display:none}}
+@media (hover: none) and (pointer: coarse){.tip{display:none}}
 
 @media (max-width:860px){
   .nav .badge{margin-top:12px}.nav .menu-btn{margin-top:14px}
@@ -289,25 +268,22 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
 </head>
 <body>
 
-<!-- CURSORE -->
-<div class="bcursor bcursor--echo1" aria-hidden="true"></div><div class="bcursor" data-bcursor-main aria-hidden="true"></div>
-<div data-cursor="" class="cursor" aria-hidden="true">
-  <div class="cursor-scramble">
-    <span data-cursor-text-target="" class="cursor-scramble__text">Cursor Text</span>
-    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 22 39" fill="none" class="cursor-scramble__chevron"><path d="M1.875 36.875L19.375 19.375L1.875 1.875" stroke="currentColor" stroke-width="5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+<div class="dot dot--echo" aria-hidden="true"></div><div class="dot" data-dot-main aria-hidden="true"></div>
+<div data-tip-state="" class="tip" aria-hidden="true">
+  <div class="tip__box">
+    <span data-tip-text="" class="tip__text">Cursor Text</span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 22 39" fill="none" class="tip__arrow"><path d="M1.875 36.875L19.375 19.375L1.875 1.875" stroke="currentColor" stroke-width="5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path></svg>
   </div>
 </div>
 
-<!-- LOADER -->
-<div data-logo-loader-init class="logo-loader" aria-hidden="true">
-  <div data-logo-loader-bg class="logo-loader__bg"></div>
-  <div data-logo-loader-stack class="logo-loader__stack">
-    <div data-logo-loader-logo class="logo-loader__logo"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></div>
+<div data-ld class="ld" aria-hidden="true">
+  <div data-ld-bg class="ld__bg"></div>
+  <div data-ld-stack class="ld__stack">
+    <div data-ld-logo class="ld__logo"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></div>
   </div>
-  <div data-logo-loader-track class="logo-loader__track"><div data-logo-loader-bar class="logo-loader__bar"></div></div>
+  <div data-ld-track class="ld__track"><div data-ld-bar class="ld__bar"></div></div>
 </div>
 
-<!-- NAV -->
 <header class="nav">
   <a href="#top" class="badge" id="navBadge" aria-label="Laaaud, torna su"><svg aria-hidden="true" focusable="false" viewBox="0 0 1059 462" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g>
@@ -330,14 +306,13 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     <a href="#servizi"><span>03</span>Servizi</a>
     <a href="#ctas" data-open-panel><span>04</span>Contatti</a>
   </nav>
-  <figure><img src="img/p3.jpg" alt=""></figure>
+  <figure><img src="img/menu.jpg" alt=""></figure>
 </div>
 
 <main id="top">
 
-<!-- SCENA 1 → 2 -->
 <section class="hero" id="hero" data-bg="prugna">
-  <h1 class="big" id="bigLogo" aria-label="Laaaud" data-bcursor><span class="clip"><span class="ec ec2"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span><span class="ec ec1"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span><span class="ec ec0"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span></span></h1>
+  <h1 class="big" id="bigLogo" aria-label="Laaaud" data-grow><span class="clip"><span class="ec ec2"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span><span class="ec ec1"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span><span class="ec ec0"><svg aria-hidden="true" focusable="false" viewBox="98 94.2 863 273.5" xmlns="http://www.w3.org/2000/svg"><path d="M97.9888 363.845V97.9902H154.579V314.853H204.332V363.845H97.9888Z" fill="#FF5A29"/><path d="M279.15 367.641C266.995 367.641 256.423 364.662 247.438 358.714C238.449 352.767 231.545 344.793 226.741 334.789C221.929 324.789 219.523 313.586 219.523 301.176V263.955C219.523 251.799 222.497 240.664 228.45 230.534C234.398 220.409 242.439 212.369 252.568 206.416C262.693 200.468 273.837 197.49 285.988 197.49H296.243V148.878C296.243 146.096 295.228 143.753 293.206 141.852C291.176 139.951 288.774 139.003 285.988 139.003C283.453 139.003 281.176 139.951 279.15 141.852C277.12 143.753 276.114 146.096 276.114 148.878V187.615H219.523V160.648C219.523 148.247 222.497 137.04 228.45 127.036C234.398 117.036 242.439 109.062 252.568 103.11C262.693 97.162 273.837 94.1836 285.988 94.1836C298.139 94.1836 309.597 97.162 319.601 103.11C329.6 109.062 337.574 117.036 343.527 127.036C349.475 137.04 352.453 148.247 352.453 160.648V363.839H312.575V350.548H308.778C306.242 356.121 302.066 360.365 296.247 363.272C290.42 366.178 284.723 367.641 279.155 367.641H279.15ZM285.984 314.852C288.765 314.852 291.171 313.904 293.202 312.003C295.223 310.102 296.238 307.768 296.238 304.977V250.668H285.984C283.448 250.668 281.172 251.616 279.146 253.517C277.116 255.417 276.109 257.761 276.109 260.542V304.977C276.109 307.768 277.12 310.102 279.146 312.003C281.167 313.904 283.448 314.852 285.984 314.852Z" fill="#FF5A29"/><path d="M431.068 367.641C418.913 367.641 408.341 364.662 399.356 358.714C390.367 352.767 383.462 344.793 378.659 334.789C373.847 324.789 371.441 313.586 371.441 301.176V263.955C371.441 251.799 374.415 240.664 380.368 230.534C386.316 220.409 394.357 212.369 404.486 206.416C414.611 200.468 425.755 197.49 437.906 197.49H448.161V148.878C448.161 146.096 447.146 143.753 445.124 141.852C443.094 139.951 440.692 139.003 437.906 139.003C435.37 139.003 433.094 139.951 431.068 141.852C429.038 143.753 428.032 146.096 428.032 148.878V187.615H371.441V160.648C371.441 148.247 374.415 137.04 380.368 127.036C386.316 117.036 394.357 109.062 404.486 103.11C414.611 97.162 425.755 94.1836 437.906 94.1836C450.057 94.1836 461.515 97.162 471.519 103.11C481.518 109.062 489.492 117.036 495.445 127.036C501.393 137.04 504.371 148.247 504.371 160.648V363.839H464.493V350.548H460.696C458.16 356.121 453.983 360.365 448.165 363.272C442.338 366.178 436.641 367.641 431.073 367.641H431.068ZM437.902 314.852C440.683 314.852 443.089 313.904 445.12 312.003C447.141 310.102 448.156 307.768 448.156 304.977V250.668H437.902C435.366 250.668 433.09 251.616 431.064 253.517C429.033 255.417 428.027 257.761 428.027 260.542V304.977C428.027 307.768 429.038 310.102 431.064 312.003C433.085 313.904 435.366 314.852 437.902 314.852Z" fill="#FF5A29"/><path d="M582.982 367.641C570.827 367.641 560.255 364.662 551.271 358.714C542.282 352.767 535.377 344.793 530.573 334.789C525.761 324.789 523.355 313.586 523.355 301.176V263.955C523.355 251.799 526.329 240.664 532.282 230.534C538.23 220.409 546.271 212.369 556.4 206.416C566.525 200.468 577.669 197.49 589.82 197.49H600.075V148.878C600.075 146.096 599.06 143.753 597.038 141.852C595.008 139.951 592.606 139.003 589.82 139.003C587.285 139.003 585.008 139.951 582.982 141.852C580.952 143.753 579.946 146.096 579.946 148.878V187.615H523.355V160.648C523.355 148.247 526.329 137.04 532.282 127.036C538.23 117.036 546.271 109.062 556.4 103.11C566.525 97.162 577.669 94.1836 589.82 94.1836C601.971 94.1836 613.429 97.162 623.433 103.11C633.432 109.062 641.406 117.036 647.359 127.036C653.307 137.04 656.285 148.247 656.285 160.648V363.839H616.407V350.548H612.61C610.074 356.121 605.898 360.365 600.075 363.272C594.248 366.178 588.55 367.641 582.982 367.641ZM589.82 314.852C592.602 314.852 595.008 313.904 597.038 312.003C599.06 310.102 600.075 307.768 600.075 304.977V250.668H589.82C587.285 250.668 585.008 251.616 582.982 253.517C580.952 255.417 579.946 257.761 579.946 260.542V304.977C579.946 307.768 580.956 310.102 582.982 312.003C585.004 313.904 587.285 314.852 589.82 314.852Z" fill="#FF5A29"/><path d="M721.811 367.642C709.906 367.642 700.353 364.663 693.135 358.715C685.917 352.767 680.725 344.794 677.563 334.789C674.393 324.79 672.814 313.587 672.814 301.177V97.9902H729.404V304.978C729.404 307.514 730.352 309.79 732.253 311.816C734.154 313.846 736.488 314.853 739.279 314.853C742.069 314.853 744.341 313.842 746.117 311.816C747.883 309.79 748.778 307.514 748.778 304.978V97.9902H805.748V363.845H760.553V350.554H756.756C754.98 354.86 750.736 358.782 744.033 362.329C737.32 365.871 729.914 367.646 721.815 367.646L721.811 367.642Z" fill="#FF5A29"/><path d="M828.086 363.845V97.9902H894.551C906.952 97.9902 918.16 100.969 928.164 106.917C938.163 112.869 946.137 120.843 952.09 130.842C958.037 140.847 961.016 152.049 961.016 164.455V297.385C961.016 309.795 958.037 320.997 952.09 330.997C946.137 341.001 938.163 348.979 928.164 354.923C918.16 360.875 906.957 363.849 894.551 363.849H828.086V363.845ZM884.677 314.853H895.311C897.838 314.853 899.927 313.967 901.577 312.192C903.223 310.425 904.046 308.395 904.046 306.114V156.097C904.046 153.816 903.223 151.794 901.577 150.019C899.927 148.252 897.838 147.363 895.311 147.363H884.677V314.853Z" fill="#FF5A29"/></svg></span></span></h1>
   <div class="hin" id="heroIn">
     <p class="lead" id="lead">Troviamo il creator del posto più adatto alla tua attività, gliela facciamo raccontare e portiamo il video ovunque tu voglia.</p>
     <div class="echo"><img src="img/hero.jpg" alt=""></div><div class="echo"><img src="img/hero.jpg" alt=""></div><div class="echo"><img src="img/hero.jpg" alt=""></div><div class="echo"><img src="img/hero.jpg" alt=""></div>
@@ -346,7 +321,6 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   <div class="veil" id="heroVeil"></div>
 </section>
 
-<!-- SCENA 3 -->
 <section class="citta" id="citta" data-bg="crema" aria-label="Creator del posto">
   <div class="row mono"><span>Creator del posto</span><span>Laaaud. Ovunque tu sia.</span><span class="orig">(IT·26)</span></div>
   <p class="info">Le pubblicità girate da lontano si somigliano tutte, e le persone non le guardano più.<br><br>Fidarsi è più facile quando a parlare è qualcuno del posto. Laaaud lo trova per te, dal quartiere a tutta Italia.</p>
@@ -354,7 +328,6 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   <span class="mono hint" aria-hidden="true">Trascina le città</span>
 </section>
 
-<!-- SCENA 4 -->
 <section class="rete" id="rete" data-bg="prugna">
   <div class="stage" id="reteStage">
     <div class="left">
@@ -418,18 +391,17 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   </div>
 </section>
 
-<!-- SCENA 5 -->
-<section class="vicino" id="vicino" data-bg="prugna" data-cursor-hover data-cursor-text="Muovi il mouse">
-  <div data-trail-area class="rotating-image-trail">
-    <div data-trail-collection class="rotating-image-trail__collection"><div class="rotating-image-trail__list">
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p5.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p3.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p6.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p8.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p4.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p7.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p2.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
-      <div data-trail-item class="rotating-image-trail__item"><div class="rotating-image-trail__card"><img src="img/p1.jpg" loading="eager" alt="" class="rotating-image-trail__card-img"></div></div>
+<section class="vicino" id="vicino" data-bg="prugna" data-tip data-tip-label="Muovi il mouse">
+  <div data-trail class="trail">
+    <div data-trail-set class="trail__set"><div class="trail__list">
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p5.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p3.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p6.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p8.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p4.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p7.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p2.jpg" loading="eager" alt="" class="trail__img"></div></div>
+      <div data-trail-item class="trail__item"><div class="trail__card"><img src="img/p1.jpg" loading="eager" alt="" class="trail__img"></div></div>
     </div></div>
   </div>
   <div class="t">
@@ -438,7 +410,6 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   </div>
 </section>
 
-<!-- SCENA 6 -->
 <section class="servizi" id="servizi" data-bg="crema" aria-label="Servizi">
   <div class="sv-stage" id="svStage"><div class="sv-side" aria-hidden="true"></div><div class="sv-wrap">
     <nav class="sv-nav" aria-label="Servizi">
@@ -454,26 +425,25 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
         <span class="split"><h3>Creator sul territorio</h3></span>
         <span class="split"><p class="d">Un creator della tua zona viene da te, gira sul posto e ti consegna i contenuti pronti. Tu continui a lavorare.</p></span>
         <ul><li>Creator scelto nella tua zona</li><li>Riprese sul posto, in una giornata</li><li>Video pronti per i tuoi canali</li></ul>
-        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
+        <div class="meta"><a  href="#ctas" class="pill" data-open-panel><span class="pill__bg"></span><span class="pill__hover is--first"></span><span class="pill__hover is--second"></span><span class="pill__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
       <article class="sv-item" style="--ph:url(img/sv2.jpg)">
         <span class="split"><h3>Diventa il protagonista</h3></span>
         <span class="split"><p class="d">Ci metti la faccia tu. Noi ti affianchiamo in tutto, dall’idea al canale.</p></span>
         <ul><li>Format e testi su misura</li><li>Riprese e montaggio</li><li>Gestione del tuo canale</li></ul>
-        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
+        <div class="meta"><a  href="#ctas" class="pill" data-open-panel><span class="pill__bg"></span><span class="pill__hover is--first"></span><span class="pill__hover is--second"></span><span class="pill__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
       <article class="sv-item" style="--ph:url(img/p7.jpg)">
         <span class="split"><h3>Gestione campioni</h3></span>
         <span class="split"><p class="d">Ci affidi i prodotti, li mandiamo ai creator in tutta Italia e loro li raccontano a casa loro.</p></span>
         <ul><li>Creator scelti per zona</li><li>Spedizioni e logistica</li><li>Contenuti da tutta Italia</li></ul>
-        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
+        <div class="meta"><a  href="#ctas" class="pill" data-open-panel><span class="pill__bg"></span><span class="pill__hover is--first"></span><span class="pill__hover is--second"></span><span class="pill__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
     </div>
     <div class="sv-ph" aria-hidden="true"><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/sv1.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/sv2.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/p7.jpg" alt=""></span></figure></div>
   </div></div>
 </section>
 
-<!-- SCENA 7 -->
 <section class="ctas" id="ctas">
   <a href="#ctas" data-open-panel><span class="t">parliamo del tuo progetto</span> <span class="cube"><b>→</b><b>→</b></span></a>
   <a href="#ctas" data-open-panel data-creator><span class="t">diventa creator</span> <span class="cube"><b>→</b><b>→</b></span></a>
@@ -481,15 +451,14 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
 
 </main>
 
-<div data-footer-parallax class="footer-wrap">
-  <footer data-footer-parallax-inner class="footer">
-    <button class="word" id="footWord" data-bcursor data-cursor-hover data-cursor-text="Clicca e cambia" aria-label="Cambia scritta"><span class="ly e2" aria-hidden="true"><span>tadaaam</span></span><span class="ly e1" aria-hidden="true"><span>tadaaam</span></span><span class="ly e0"><span>tadaaam</span></span></button>
+<div data-fp class="footer-wrap">
+  <footer data-fp-inner class="footer">
+    <button class="word" id="footWord" data-grow data-tip data-tip-label="Clicca e cambia" aria-label="Cambia scritta"><span class="ly e2" aria-hidden="true"><span>tadaaam</span></span><span class="ly e1" aria-hidden="true"><span>tadaaam</span></span><span class="ly e0"><span>tadaaam</span></span></button>
     <div class="bot"><span>© 2026 Laaaud · un progetto In-Sane</span><span>Privacy · Cookie</span></div>
   </footer>
-  <div data-footer-parallax-dark class="footer-wrap__dark"></div>
+  <div data-fp-dark class="footer-wrap__dark"></div>
 </div>
 
-<!-- PANNELLO FORM -->
 <div class="panel" id="panel" aria-hidden="true">
   <div class="veil" data-close></div>
   <div class="box" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
@@ -503,7 +472,7 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
       <label for="f3" class="biz">Azienda<input id="f3"></label>
       <label for="f4">Email<input id="f4" type="email"></label>
       <label for="f5" class="biz">Sede aziendale<input id="f5"></label>
-      <button data-button-015="" class="button-015" type="submit"><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">invia</span></button>
+      <button  class="pill" type="submit"><span class="pill__bg"></span><span class="pill__hover is--first"></span><span class="pill__hover is--second"></span><span class="pill__text">invia</span></button>
       <p class="ok" id="ok" role="status">Grazie! È una demo: il modulo non invia ancora nulla.</p>
     </form>
   </div>
@@ -516,7 +485,7 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
 <script>
 (() => {
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; scrollTo(0, 0); // ogni ricarica riparte dall'inizio
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; scrollTo(0, 0);
   const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const G = typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
@@ -524,13 +493,12 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   const isM = () => innerWidth < 861;
   const vw = v => innerWidth * v / 100;
 
-  /* ---------- Osmo · Logo Stack Loader ---------- */
-  function initLoader() {
-    const root = $('[data-logo-loader-init]');
+    function initLoader() {
+    const root = $('[data-ld]');
     const done = () => document.dispatchEvent(new Event('laaaud:loaded'));
     if (!G) { root.style.display = 'none'; done(); return; }
-    const bg = $('[data-logo-loader-bg]', root), stack = $('[data-logo-loader-stack]', root), logo = $('[data-logo-loader-logo]', root);
-    const bar = $('[data-logo-loader-bar]', root), track = $('[data-logo-loader-track]', root);
+    const bg = $('[data-ld-bg]', root), stack = $('[data-ld-stack]', root), logo = $('[data-ld-logo]', root);
+    const bar = $('[data-ld-bar]', root), track = $('[data-ld-track]', root);
     const dups = []; for (let i = 0; i < 5; i++) { const d = logo.cloneNode(true); stack.appendChild(d); dups.push(d); }
     const em = parseFloat(getComputedStyle(stack).fontSize);
     const tl = gsap.timeline({defaults: {duration: .4, ease: 'power2.out'}, onComplete: done});
@@ -549,9 +517,8 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     tl.to(bar, {scaleX: 1, duration: tl.labels.impact, ease: 'power2.inOut'}, 0).to(track, {autoAlpha: 0}, 'impact+=0.4').set(root, {display: 'none'});
   }
 
-  /* ---------- Osmo · Rotating Image Trail (+ trascinamento su touch) ---------- */
-  function initTrail() {
-    const area = $('[data-trail-area]'); const items = $$('[data-trail-item]', area); if (!items.length) return;
+    function initTrail() {
+    const area = $('[data-trail]'); const items = $$('[data-trail-item]', area); if (!items.length) return;
     let index = 0, lastX = null, lastY = null; const step = () => items[0].getBoundingClientRect().width * .5 || 60;
     const spawn = (x, y) => { const c = items[index].cloneNode(true); c.style.left = x + 'px'; c.style.top = y + 'px';
       c.setAttribute('data-trail-item', 'hidden'); area.appendChild(c); void c.getBoundingClientRect(); c.setAttribute('data-trail-item', 'visible');
@@ -564,8 +531,7 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     area.parentElement.addEventListener('touchmove', e => { const t = e.touches[0]; if (t) move(t.clientX, t.clientY); }, {passive: true});
   }
 
-  /* ---------- Menu e pannello ---------- */
-  const menu = $('#menu'), menuBtn = $('#menuBtn');
+    const menu = $('#menu'), menuBtn = $('#menuBtn');
   const toggleMenu = open => { menu.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); menu.setAttribute('aria-hidden', !open); menuBtn.textContent = open ? 'CHIUDI' : 'MENU';
     if (G && !reduce) { gsap.to(menu, {clipPath: open ? 'inset(0 0 0% 0)' : 'inset(0 0 100% 0)', duration: .9, ease: 'power4.inOut'}); if (open) gsap.from('.menu nav a', {yPercent: 100, opacity: 0, duration: 1, stagger: .05, ease: 'expo.out', delay: .3}); }
     else menu.style.clipPath = open ? 'none' : 'inset(0 0 100% 0)'; };
@@ -581,14 +547,12 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   addEventListener('keydown', e => { if (e.key === 'Escape') { panel.classList.remove('open'); toggleMenu(false); } });
   $('#form').addEventListener('submit', e => { e.preventDefault(); $('#ok').classList.add('show'); });
 
-  /* CTA giganti: sempre su una riga, stessa misura */
-  const fitCtas = () => { const as = $$('.ctas a'); as.forEach(a => a.style.fontSize = ''); let f = Infinity;
+    const fitCtas = () => { const as = $$('.ctas a'); as.forEach(a => a.style.fontSize = ''); let f = Infinity;
     as.forEach(a => { const t = $('.t', a), c = $('.cube', a), cs = getComputedStyle(a); const avail = a.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - c.offsetWidth - (parseFloat(cs.columnGap) || 0); f = Math.min(f, parseFloat(cs.fontSize) * Math.min(1, avail * .96 / t.scrollWidth)); });
     as.forEach(a => a.style.fontSize = f + 'px'); };
 
-  /* ---------- Scena 1: geometria (dal frame Figma a 1440, in vw) ---------- */
-  const hero = $('#hero'), big = $('#bigLogo'), lead = $('#lead'), echoes = $$('#heroIn .echo'), photo = $('#heroPhoto'), badge = $('#navBadge');
-  const LR = 863 / 273.5; // proporzioni delle lettere del logo
+    const hero = $('#hero'), big = $('#bigLogo'), lead = $('#lead'), echoes = $$('#heroIn .echo'), photo = $('#heroPhoto'), badge = $('#navBadge');
+  const LR = 863 / 273.5;
   const geo = () => {
     const W = innerWidth, H = innerHeight, m = isM();
     const lx = m ? vw(4) : vw(1.3), lw = W - 2 * lx, lh = lw / LR, ly = m ? vw(14) : vw(1.6);
@@ -598,7 +562,6 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     const fw = m ? vw(60) : vw(43.9), fh = fw * 1.25, fx = m ? W - vw(4) - fw : vw(29.7), fy = Math.max(m ? 0 : vw(58.7), ty + th + (m ? vw(10) : vw(5)));
     const e = [0, 1, 2, 3].map(k => { const s = [.48, .61, .74, .87][k], w = fw * s; return {left: (m ? vw(4) : vw(1.8)) + k * (m ? vw(7.4) : vw(7)), top: fy + (3 - k) * vw(.35), width: w, height: w * 1.25}; });
     const shift = Math.max(0, fy + fh - H + (m ? vw(8) : vw(3)));
-    // dove atterra il logo: le lettere dentro il badge del menu
     const b = badge.getBoundingClientRect(), bw = badge.offsetWidth, bh = badge.offsetHeight, bl = b.left + (b.width - bw) / 2, bt = b.top + (b.height - bh) / 2;
     const nav = {x: bl + bw * (98 / 1059), y: bt + bh * (94.2 / 462), w: bw * (863 / 1059)};
     return {W, H, lx, ly, lw, lh, fx, fy, fw, fh, e, shift, nav};
@@ -608,14 +571,13 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     gsap.set(big, {left: g.lx, top: g.ly, width: g.lw, height: g.lh});
   };
 
-  /* ---------- Scena 3: le citta' cadono (Matter.js) e si trascinano ---------- */
-  const CITIES = ['BRescia', 'Milano', 'Bari', 'Palermo', 'Lignano Sabbiadoro', 'San Benedetto', 'Napoli', 'Civitanova', 'Torino', 'Lecce', 'Bologna', 'San Cesareo', 'Cagliari', 'Verona', 'Firenze', 'Trento', 'Genova', 'Roma', 'Matera', 'Rimini', 'Bergamo', 'Pescara', 'Siena', 'Udine', 'Perugia', 'Trieste'];
+    const CITIES = ['BRescia', 'Milano', 'Bari', 'Palermo', 'Lignano Sabbiadoro', 'San Benedetto', 'Napoli', 'Civitanova', 'Torino', 'Lecce', 'Bologna', 'San Cesareo', 'Cagliari', 'Verona', 'Firenze', 'Trento', 'Genova', 'Roma', 'Matera', 'Rimini', 'Bergamo', 'Pescara', 'Siena', 'Udine', 'Perugia', 'Trieste'];
   function initCities() {
     const sec = $('#citta'), world = $('#world');
     const M = typeof Matter !== 'undefined' ? Matter : null;
     const make = () => { world.innerHTML = ''; const n = isM() ? 11 : 20;
       return CITIES.slice(0, n).map((c, i) => { const el = document.createElement('div'); const tz = i % 3 === 1;
-        el.setAttribute('data-bcursor', ''); el.className = 'blk ' + ['p', 'l', 'p', 'a', 'l'][i % 5] + (tz ? ' tz' : ''); el.textContent = c; world.appendChild(el); return {el, tz}; }); };
+        el.setAttribute('data-grow', ''); el.className = 'blk ' + ['p', 'l', 'p', 'a', 'l'][i % 5] + (tz ? ' tz' : ''); el.textContent = c; world.appendChild(el); return {el, tz}; }); };
     if (!M || reduce || !G) { sec.classList.add('static'); make().forEach(b => { if (b.tz) b.el.style.clipPath = 'polygon(12% 0,88% 0,100% 100%,0 100%)'; }); return; }
     const {Engine, Bodies, Body, Composite, Constraint, Query, Sleeping} = M;
     const engine = Engine.create({enableSleeping: false, positionIterations: 10, velocityIterations: 8}); engine.gravity.y = 1.4;
@@ -631,7 +593,6 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
         const opts = {restitution: .05, friction: .25, frictionStatic: .4, frictionAir: .01, slop: .01, density: .002, angle: (Math.random() - .5) * .35};
         const body = tz ? Bodies.trapezoid(x, y, w, h, SLOPE, opts) : Bodies.rectangle(x, y, w, h, opts);
         if (tz) el.style.clipPath = `polygon(${SLOPE * 100}% 0,${100 - SLOPE * 100}% 0,100% 100%,0 100%)`;
-        // il baricentro del trapezio non e' al centro del box: tengo l'offset per allineare il DOM
         Body.setAngle(body, 0); const off = {x: (body.bounds.min.x + body.bounds.max.x) / 2 - body.position.x, y: (body.bounds.min.y + body.bounds.max.y) / 2 - body.position.y}; Body.setAngle(body, opts.angle);
         blocks.push({el, body, w, h, off});
         el.addEventListener('pointerdown', ev => grab(ev, blocks[i]));
@@ -643,9 +604,7 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     addEventListener('pointermove', ev => { if (drag) drag.pointA = pt(ev); });
     const release = () => { if (drag) { Composite.remove(engine.world, drag); drag = null; } };
     addEventListener('pointerup', release); addEventListener('pointercancel', release);
-    // i corpi fisici si misurano solo al momento della caduta, a font caricati: cosi' combaciano col disegno e non restano spazi
     const drop = () => { if (dropped) return; dropped = true; build(); calls.forEach(c => c.kill()); calls = blocks.map((b, i) => gsap.delayedCall(i * .22 + Math.random() * .1, () => { Composite.add(engine.world, b.body); b.el.style.visibility = 'visible'; })); };
-    // quando la sezione esce tutta dallo schermo si azzera: rientrando, le citta' ricadono da capo
     const reset = () => { if (!dropped) return; calls.forEach(c => c.kill()); calls = []; if (drag) { Composite.remove(engine.world, drag); drag = null; }
       blocks.forEach(b => Composite.remove(engine.world, b.body)); blocks = []; dropped = false; make(); };
     const render = () => { blocks.forEach(({el, body, w, h, off}) => { const c = Math.cos(body.angle), s = Math.sin(body.angle);
@@ -659,25 +618,19 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     let lw = innerWidth; addEventListener('resize', () => { if (Math.abs(innerWidth - lw) < 40) { buildWalls(); return; } lw = innerWidth; buildWalls(); const was = dropped; dropped = false; if (was) drop(); else make(); });
   }
 
-
-  /* ---------- Osmo · Basic Custom Cursor (versione brand: quadrato + eco, classi rinominate .bcursor) ---------- */
-  function initBasicCustomCursor() {
-    gsap.set('.bcursor', {xPercent: -50, yPercent: -50});
-    const lag = [['[data-bcursor-main]', .6], ['.bcursor--echo1', .85]].map(([sel, d]) => ({
+    function initDot() {
+    gsap.set('.dot', {xPercent: -50, yPercent: -50});
+    const lag = [['[data-dot-main]', .6], ['.dot--echo', .85]].map(([sel, d]) => ({
       xTo: gsap.quickTo(sel, 'x', {duration: d, ease: 'power3'}), yTo: gsap.quickTo(sel, 'y', {duration: d, ease: 'power3'})}));
     window.addEventListener('mousemove', e => { lag.forEach(l => { l.xTo(e.clientX); l.yTo(e.clientY); }); });
   }
 
-
-  /* Footer: la scritta gigante cambia al click — tadaaam → laaaud → fooorte → da capo.
-     La parola nuova sale con due eco (lilla e crema) che arrivano prima e restano sotto, come le pile del brand. */
-  function initFootWord() {
+    function initFootWord() {
     const btn = $('#footWord'); if (!btn) return;
     const WORDS = ['tadaaam', 'laaaud', 'fooorte']; let k = 0, busy = false;
     const layers = $$('.ly', btn), inner = layers.map(l => l.firstElementChild);
     const fit = () => { const t = btn.clientWidth; layers.forEach(l => l.style.fontSize = '100px'); const w = inner[inner.length - 1].scrollWidth || 1; layers.forEach(l => l.style.fontSize = (100 * t / w) + 'px'); };
     fit(); if (document.fonts) document.fonts.ready.then(fit); addEventListener('resize', fit);
-    // all'hover la scritta si scuote un po'
     btn.addEventListener('mouseenter', () => { if (!G || reduce) return; gsap.fromTo(btn, {rotation: 0, x: 0}, {keyframes: {rotation: [-1.6, 1.4, -1, .8, -.4, 0], x: [-8, 7, -5, 4, -2, 0]}, duration: .6, ease: 'none', overwrite: true}); });
     btn.addEventListener('click', () => { if (busy) return; busy = true; k = (k + 1) % WORDS.length;
       if (!G || reduce) { inner.forEach(i => i.textContent = WORDS[k]); fit(); busy = false; return; }
@@ -687,11 +640,9 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
         .fromTo(inner, {yPercent: 110}, {yPercent: 0, duration: .9, ease: 'expo.out', stagger: .07}); });
   }
 
-
-  /* ---------- Osmo · Scramble Text Cursor ---------- */
-  function initScrambleTextCursor() {
-    const cursor = document.querySelector("[data-cursor]");
-    const cursorTextTarget = document.querySelector("[data-cursor-text-target]");
+    function initTip() {
+    const cursor = document.querySelector("[data-tip-state]");
+    const cursorTextTarget = document.querySelector("[data-tip-text]");
 
     if (!cursor || !cursorTextTarget || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
@@ -700,20 +651,20 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     let hasMouseMoved = false;
     let activeHoverItem = null;
 
-    const scrambleCharacters = "XYZxy#&@0$€£";
+    const chars = "XYZxy#&@0$€£";
 
     const xTo = gsap.quickTo(cursor, "x", {duration: 0.4, ease: "power3.out"});
     const yTo = gsap.quickTo(cursor, "y", {duration: 0.4, ease: "power3.out"});
 
     function updateCursor() {
-      const hoverItem = document.elementFromPoint(mouseX, mouseY)?.closest("[data-cursor-hover]");
+      const hoverItem = document.elementFromPoint(mouseX, mouseY)?.closest("[data-tip]");
       const rect = cursor.getBoundingClientRect();
 
       const isHovering = !!hoverItem;
       const isEdge = rect.right >= window.innerWidth;
-      const text = hoverItem?.getAttribute("data-cursor-text") || "";
+      const text = hoverItem?.getAttribute("data-tip-label") || "";
 
-      cursor.setAttribute("data-cursor", isHovering ? (isEdge ? "active-edge" : "active") : "");
+      cursor.setAttribute("data-tip-state", isHovering ? (isEdge ? "active-edge" : "active") : "");
 
       if (hoverItem !== activeHoverItem) {
         gsap.to(cursorTextTarget, {
@@ -721,7 +672,7 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
           overwrite: "auto",
           scrambleText: {
             text: text,
-            chars: scrambleCharacters,
+            chars: chars,
             speed: 1.2
           }
         });
@@ -748,21 +699,18 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   }
 
   initLoader(); initTrail(); initFootWord();
-  if (G && typeof ScrambleTextPlugin !== 'undefined') { gsap.registerPlugin(ScrambleTextPlugin); initScrambleTextCursor(); }
-  if (G && matchMedia('(hover: hover)').matches) initBasicCustomCursor();
+  if (G && typeof ScrambleTextPlugin !== 'undefined') { gsap.registerPlugin(ScrambleTextPlugin); initTip(); }
+  if (G && matchMedia('(hover: hover)').matches) initDot();
   if (!G) { fitCtas(); initCities(); return; }
 
-  /* Lenis */
-  let lenis = null;
+    let lenis = null;
   if (typeof Lenis !== 'undefined' && !reduce) { lenis = new Lenis({lerp: .11, wheelMultiplier: 1.05}); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
   $$('a[href^="#"]:not([data-open-panel])').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href'); const el = id === '#top' ? 0 : $(id); if (el === null) return; e.preventDefault(); lenis ? lenis.scrollTo(el, {duration: 1.6}) : scrollTo({top: el ? el.offsetTop : 0, behavior: 'smooth'}); }));
 
   fitCtas(); if (document.fonts) document.fonts.ready.then(() => { fitCtas(); ScrollTrigger.refresh(); });
   addEventListener('resize', fitCtas);
 
-  /* ---------- Scena 1 → 2 ---------- */
-  place(); ScrollTrigger.addEventListener('refreshInit', place);
-  // testo in righe per l'ingresso
+    place(); ScrollTrigger.addEventListener('refreshInit', place);
   const splitLines = el => { const words = el.textContent.trim().split(/\s+/); el.innerHTML = words.map(w => `<span class="w" style="display:inline-block">${w}</span>`).join(' ');
     const rows = []; let top = null; $$('.w', el).forEach(w => { if (w.offsetTop !== top) { rows.push([]); top = w.offsetTop; } rows[rows.length - 1].push(w.textContent); });
     el.innerHTML = rows.map(r => `<span class="ln"><span>${r.join(' ')}</span></span>`).join(''); };
@@ -772,21 +720,18 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
   echoes.forEach((e, k) => gsap.set(e, {left: g.e[k].left, top: g.e[k].top, width: g.e[k].width, height: g.e[k].height}));
   gsap.set(photo, {left: g.fx, top: g.fy, width: g.fw, height: g.fh});
 
-  // ingresso morbido dopo il loader
   const bigLayers = $$('.ec', big); gsap.set(bigLayers, {yPercent: 110});
   gsap.set('#lead .ln > span', {yPercent: 110}); gsap.set([...echoes, photo], {autoAlpha: 0});
   document.addEventListener('laaaud:loaded', () => {
     const tl = gsap.timeline({defaults: {ease: 'expo.out'}});
-    // il logo entra come le scritte del footer: due eco (lilla e crema) salgono prima, poi il logo arancio
     tl.to(bigLayers, {yPercent: 0, duration: 1.2, stagger: .08}, 0)
       .to('#lead .ln > span', {yPercent: 0, duration: 1.1, stagger: .07}, .35);
     echoes.forEach((e, k) => tl.fromTo(e, {autoAlpha: 1, scale: .7, transformOrigin: '50% 100%'}, {scale: 1, duration: .9}, .6 + k * .08));
     tl.fromTo(photo, {autoAlpha: 1, scale: .7, transformOrigin: '50% 100%'}, {scale: 1, duration: .9}, .6 + echoes.length * .08);
   });
 
-  /* Scena 6 · stato del servizio, foto a pila con passaggio a trail */
-  const svItems = $$('.sv-item'), svBtns = $$('.sv-nav button'), svCards = $$('.sv-card');
-  const slot = r => ({x: `${-r * 6}%`, y: `${r * 2}%`, scale: 1 - r * .06, rotation: -r * 1.2, zIndex: 3 - r}); // in Figma la rotazione positiva e' antioraria: qui va col segno meno
+    const svItems = $$('.sv-item'), svBtns = $$('.sv-nav button'), svCards = $$('.sv-card');
+  const slot = r => ({x: `${-r * 6}%`, y: `${r * 2}%`, scale: 1 - r * .06, rotation: -r * 1.2, zIndex: 3 - r});
   svCards.forEach((c, i) => gsap.set(c, {...slot(i), transformOrigin: '0% 50%'}));
   let svK = 0;
   function svSet(k) { if (k === svK) return; const prevK = svK; svK = k;
@@ -797,13 +742,11 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     gsap.fromTo($$('.split > *', svItems[k]), {yPercent: 105}, {yPercent: 0, duration: .9, stagger: .06, ease: 'expo.out', overwrite: true});
     gsap.fromTo($$('li, .meta', svItems[k]), {y: 24, opacity: 0}, {y: 0, opacity: 1, duration: .8, stagger: .05, ease: 'expo.out', delay: .15, overwrite: true}); }
 
-  /* Scena 1: anche il logo grande si scuote un po' all'hover (si muove lo strato interno, il logo intero e' guidato dallo scroll) */
-  big.addEventListener('mouseenter', () => { if (reduce) return; gsap.fromTo(big.firstElementChild, {rotation: 0, x: 0}, {keyframes: {rotation: [-1.6, 1.4, -1, .8, -.4, 0], x: [-8, 7, -5, 4, -2, 0]}, duration: .6, ease: 'none', overwrite: 'auto'}); });
+    big.addEventListener('mouseenter', () => { if (reduce) return; gsap.fromTo(big.firstElementChild, {rotation: 0, x: 0}, {keyframes: {rotation: [-1.6, 1.4, -1, .8, -.4, 0], x: [-8, 7, -5, 4, -2, 0]}, duration: .6, ease: 'none', overwrite: 'auto'}); });
 
   const mm = gsap.matchMedia();
   mm.add({d: '(min-width: 861px)', m: '(max-width: 860px)'}, ctx => { const D = ctx.conditions.d;
-    /* la pagina scorre, il logo grande va nel menu, la pila si richiude e la foto va a tutto schermo */
-    const ht = gsap.timeline({scrollTrigger: {trigger: hero, start: 'top top', end: () => '+=' + (g.shift + innerHeight * 1.6), pin: true, scrub: .8, invalidateOnRefresh: true}});
+        const ht = gsap.timeline({scrollTrigger: {trigger: hero, start: 'top top', end: () => '+=' + (g.shift + innerHeight * 1.6), pin: true, scrub: .8, invalidateOnRefresh: true}});
     ht.fromTo('#heroIn', {y: 0}, {y: () => -g.shift, ease: 'none', duration: 1}, 0)
       .fromTo(big, {x: 0, y: 0, scale: 1, rotation: 0}, {x: () => g.nav.x - g.lx, y: () => g.nav.y - g.ly, scale: () => g.nav.w / g.lw, rotation: .7, ease: 'power3.out', duration: 1}, 0)
       .to('#lead', {opacity: 0, ease: 'none', duration: .35}, .45)
@@ -814,57 +757,49 @@ body:has([data-cursor="active"]) .bcursor,body:has([data-cursor="active-edge"]) 
     ht.fromTo(photo, {...frontSet, borderRadius: 4}, {left: 0, top: () => g.shift, width: () => innerWidth, height: () => innerHeight, borderRadius: 0, ease: 'power2.inOut', duration: 1}, 1.3)
       .to({}, {duration: .3});
 
-    /* Scena 4 · La rete */
-    const pins = $$('#map .pin');
+        const pins = $$('#map .pin');
     if (D) {
       const r = gsap.timeline({scrollTrigger: {trigger: '#rete', start: 'top 80%', end: 'top 15%', scrub: .6}});
       r.from(pins, {scale: 0, y: 30, opacity: 0, transformOrigin: '50% 100%', stagger: {amount: 1.1, from: 'random'}, duration: .35, ease: 'back.out(2)'}, 0);
       $$('.rete .num b').forEach((b, k) => { const o = {v: 0}; b.textContent = '0'; r.to(o, {v: +b.dataset.to, duration: .9, ease: 'none', onUpdate: () => b.textContent = Math.round(o.v)}, k * .15); });
     } else gsap.from(pins, {scale: 0, opacity: 0, stagger: {amount: .9, from: 'random'}, duration: .5, ease: 'back.out(2)', scrollTrigger: {trigger: '#map', start: 'top 70%'}});
 
-    /* Scena 6 · Servizi */
-    if (D) {
+        if (D) {
       const st = ScrollTrigger.create({trigger: '#svStage', start: 'top top', end: '+=240%', pin: true, scrub: true,
         onUpdate: s => { gsap.set('#svBar', {scaleX: s.progress}); svSet(Math.min(2, Math.floor(s.progress * 3))); }});
       svBtns.forEach((b, i) => b.onclick = () => { const y = st.start + (i + .5) / 3 * (st.end - st.start); lenis ? lenis.scrollTo(y, {duration: 1.2}) : scrollTo({top: y, behavior: 'smooth'}); });
     }
   });
 
-  /* Navigazione: dalla Scena 3 in poi sparisce verso l'alto scorrendo giu', torna appena si scorre su */
-  const navEl = $('.nav'); let navHidden = false;
+    const navEl = $('.nav'); let navHidden = false;
   const navShow = show => { if (show === !navHidden) return; navHidden = !show; gsap.to(navEl, {yPercent: show ? 0 : -140, duration: show ? .5 : .4, ease: show ? 'expo.out' : 'power2.in', overwrite: true}); };
   ScrollTrigger.create({trigger: '#citta', start: 'top top', end: 'max',
     onUpdate: st => navShow(st.direction < 0 || menu.classList.contains('open')), onLeaveBack: () => navShow(true)});
 
-  /* Uscita della Scena 2: la Scena 3 ci scorre sopra */
-  const exitST = {trigger: '#citta', start: 'top bottom', end: 'top top', scrub: true};
+    const exitST = {trigger: '#citta', start: 'top bottom', end: 'top top', scrub: true};
   gsap.to('#heroVeil', {opacity: .55, ease: 'none', scrollTrigger: exitST});
   gsap.fromTo('#citta', {borderRadius: '28px 28px 0 0'}, {borderRadius: '0px 0px 0 0', ease: 'none', scrollTrigger: {...exitST}});
   gsap.from('#citta .info', {y: 60, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: {trigger: '#citta', start: 'top 45%'}});
 
-  /* Fondo che sfuma tra le scene */
-  const C = {crema: '#FFF1E0', prugna: '#220227'};
+    const C = {crema: '#FFF1E0', prugna: '#220227'};
   const secs = $$('[data-bg]');
   secs.forEach((sec, k) => { if (!k) return;
     const a = C[secs[k - 1].dataset.bg], b = C[sec.dataset.bg]; if (a === b) return;
-    const paint = c => { document.body.style.backgroundColor = c; }; // la Scena 3 ha il suo crema fisso: non va mai ridipinta
-    if (k === 1 || sec.id === 'rete') { // cambi netti: Scena 2 → 3 (la crema scorre sopra la foto) e Scena 3 → La rete (gia' prugna)
+    const paint = c => { document.body.style.backgroundColor = c; };
+    if (k === 1 || sec.id === 'rete') {
       ScrollTrigger.create({trigger: sec, start: 'top top', onEnter: () => document.body.style.backgroundColor = b, onLeaveBack: () => document.body.style.backgroundColor = a}); return; }
-    // sfumato guidato dallo scroll, senza toccare il fondo quando la sezione e' lontana
     ScrollTrigger.create({trigger: sec, start: 'top 55%', end: 'top 20%', onUpdate: st => paint(gsap.utils.interpolate(a, b, st.progress)), onLeave: () => paint(b), onLeaveBack: () => paint(a)});
     const inner = {servizi: '.sv-nav, .sv-body, .sv-ph'}[sec.id];
     if (inner) gsap.fromTo(inner, {y: 90, opacity: 0}, {y: 0, opacity: 1, ease: 'power2.out', stagger: .05, immediateRender: true, scrollTrigger: {trigger: sec, start: 'top 60%', end: 'top 15%', scrub: true}}); });
 
-  /* Scena 5 · i blocchi colorati partono uno sotto l'altro e si aprono */
-  const bk = {trigger: '#vicino', start: 'top 70%', end: 'top 10%', scrub: .6, invalidateOnRefresh: true};
+    const bk = {trigger: '#vicino', start: 'top 70%', end: 'top 10%', scrub: .6, invalidateOnRefresh: true};
   gsap.set('.vicino .t .bk', {x: 0, y: 0, rotation: .6});
   gsap.to('.vicino .t .bk:nth-child(1)', {x: () => -vw(2.2), y: () => vw(2.2), rotation: 3, ease: 'power2.out', scrollTrigger: bk});
   gsap.to('.vicino .t .bk:nth-child(2)', {x: () => -vw(1.1), y: () => vw(1.1), rotation: -1.5, ease: 'power2.out', scrollTrigger: {...bk}});
 
-  /* Scena 7 */
-  gsap.from('.ctas a', {xPercent: k => k ? 8 : -8, opacity: 0, duration: 1.2, stagger: .1, ease: 'expo.out', scrollTrigger: {trigger: '.ctas', start: 'top 85%'}});
-  $$('[data-footer-parallax]').forEach(el => { const tl = gsap.timeline({scrollTrigger: {trigger: el, start: 'clamp(top bottom)', end: 'clamp(top top)', scrub: true}});
-    tl.from($('[data-footer-parallax-inner]', el), {yPercent: -25, ease: 'linear'}).from($('[data-footer-parallax-dark]', el), {opacity: .5, ease: 'linear'}, '<'); });
+    gsap.from('.ctas a', {xPercent: k => k ? 8 : -8, opacity: 0, duration: 1.2, stagger: .1, ease: 'expo.out', scrollTrigger: {trigger: '.ctas', start: 'top 85%'}});
+  $$('[data-fp]').forEach(el => { const tl = gsap.timeline({scrollTrigger: {trigger: el, start: 'clamp(top bottom)', end: 'clamp(top top)', scrub: true}});
+    tl.from($('[data-fp-inner]', el), {yPercent: -25, ease: 'linear'}).from($('[data-fp-dark]', el), {opacity: .5, ease: 'linear'}, '<'); });
 
   initCities();
   addEventListener('load', () => ScrollTrigger.refresh());
