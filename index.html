@@ -179,7 +179,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   --button-015-ease-hover-soft-out:cubic-bezier(.215,.61,.355,1);
   --button-015-ease-focus:cubic-bezier(.32,.72,0,1);
 }
-.button-015{color:var(--button-015-color);-webkit-user-select:none;user-select:none;background-color:#0000;outline-style:none;place-content:center;place-items:center;padding:0;line-height:1;text-decoration:none;display:inline-grid;position:relative;-webkit-tap-highlight-color:transparent;transition:color .15s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click);font-family:var(--text);font-weight:500;font-size:max(16px,1.46vw);white-space:nowrap;border:0;cursor:pointer;rotate:-.7deg}
+.button-015{color:var(--button-015-color);-webkit-user-select:none;user-select:none;background-color:#0000;outline-style:none;place-content:center;place-items:center;padding:0;line-height:1;text-decoration:none;display:inline-grid;position:relative;-webkit-tap-highlight-color:transparent;transition:color .15s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click);font-family:var(--text);font-weight:500;font-size:clamp(16px,1.46vw,21px);white-space:nowrap;border:0;cursor:pointer}
 .button-015::after{content:'';display:block;position:absolute;inset:var(--button-015-focus-inset);border-radius:var(--button-015-border-radius);transition:box-shadow .3s var(--button-015-ease-focus);pointer-events:none;z-index:1}
 .button-015:is(:focus-visible)::after{box-shadow:0 0 0 .125em var(--button-015-color-focus)}
 .button-015:active{scale:var(--button-015-click-scale)}
