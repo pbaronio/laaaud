@@ -133,38 +133,66 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .servizi{position:relative}
 .sv-stage{position:relative;height:100svh}
 .sv-wrap{position:absolute;left:0;right:0;top:50%;height:38.3vw;transform:translateY(-50%)}
-.sv-nav{position:absolute;left:1.39vw;top:-1.9vw;display:flex;flex-direction:column;gap:.55vw}
-.sv-nav button{text-align:left;display:flex;gap:.7vw;align-items:baseline;font-size:max(15px,1.18vw);font-weight:700;opacity:.35;transition:opacity .4s}
-.sv-nav button b{font-family:var(--display);font-weight:400;font-size:max(20px,1.67vw);line-height:normal}
-.sv-nav button.on{opacity:1}
-.sv-lab-m{display:none}
-.sv-nav .sv-lab{margin-bottom:1.1vw;white-space:nowrap}
-.sv-nav .sv-lab::before{content:"";display:inline-block;width:8px;height:8px;background:var(--arancio);margin-right:8px;vertical-align:1px}
+.sv-bar{display:none!important}
+.sv-side{position:absolute;left:0;top:0;bottom:0;width:17vw;background:var(--prugna)}
+.sv-nav{position:absolute;left:1.39vw;top:0;display:flex;flex-direction:column;gap:.75vw;color:#fff}
+.sv-nav button{text-align:left;display:flex;gap:.7vw;align-items:baseline;font-size:max(13px,1.04vw);font-weight:700;text-transform:uppercase;color:#6F5B73;transition:color .4s}
+.sv-nav button b{font-family:var(--display);font-weight:400;font-size:max(18px,1.53vw);line-height:normal;text-transform:none;color:#fff;opacity:.35;transition:opacity .4s}
+.sv-nav button.on{color:#fff}.sv-nav button.on b{opacity:1}
+.sv-lab-m{display:none;font-family:var(--text)!important;font-weight:700;letter-spacing:0}
+.sv-nav .sv-lab{margin-bottom:1.4vw;font-family:var(--text);font-size:max(13px,1.04vw);font-weight:700;letter-spacing:0;text-transform:uppercase;white-space:nowrap}
+
 .sv-bar{height:2px;background:#D8CCC2;margin-top:1.2vw;position:relative;width:11.8vw}
 .sv-bar i{position:absolute;inset:0;background:var(--prugna);transform-origin:0 50%;transform:scaleX(0)}
-.sv-body{position:absolute;left:25.8vw;top:-.83vw;width:35.6vw;display:grid}
+.sv-body{position:absolute;left:22.85vw;top:-1.1vw;width:35.6vw;display:grid}
 .sv-item{grid-area:1/1;display:flex;flex-direction:column;visibility:hidden}
 .sv-item.on{visibility:visible}
 .sv-item h3{font-family:var(--display);font-weight:400;font-size:6.94vw;line-height:.87;letter-spacing:-.035em}
-.sv-item .d{font-size:max(16px,1.46vw);line-height:1.3;font-weight:500;width:30vw;margin-top:1.9vw}
-.sv-item ul{list-style:none;margin-top:1.45vw;width:27.8vw;border-top:1px solid #DCCFC4}
+.sv-item .d{font-size:max(16px,1.46vw);line-height:1.3;font-weight:500;width:30vw;margin-top:2.64vw;padding-left:.42vw}
+.sv-item ul{list-style:none;margin-top:2.64vw;width:27.8vw;border-top:1px solid #DCCFC4}
 .sv-item li{font-weight:500;line-height:1.3;font-size:max(16px,1.46vw);padding:1.04vw 0;border-bottom:1px solid #DCCFC4}
-.sv-item .meta{display:flex;align-items:center;gap:1.4vw;margin-top:3.1vw;font-size:max(16px,1.46vw);font-weight:500;line-height:1.3}
+.sv-item .meta{display:flex;align-items:center;gap:1.4vw;margin-top:3.2vw;font-size:max(16px,1.46vw);font-weight:500;line-height:1.3}
 .sv-item .split{overflow:hidden;display:block}
 .sv-item .split > *{display:block}
-.sv-ph{position:absolute;left:67.1vw;top:0;width:30.7vw;height:38.3vw}
+.sv-ph{position:absolute;left:65.6vw;top:0;width:30.7vw;height:38.3vw}
 .sv-card{position:absolute;inset:0;will-change:transform}
-.sv-card .bgc{position:absolute;inset:0;border-radius:4px;transform:translate(-.42vw,-.42vw)}
+.sv-card .bgc{position:absolute;inset:0;border-radius:4px;transform:translate(-.35vw,-.35vw)}
 .sv-card .im{position:absolute;inset:0;overflow:hidden;border-radius:4px}
-.sv-card:nth-child(1) .bgc{background:var(--arancio)}
-.sv-card:nth-child(2) .bgc{background:var(--lilla)}
+.sv-card:nth-child(1) .bgc{background:var(--lilla)}
+.sv-card:nth-child(2) .bgc{background:var(--arancio)}
 .sv-card:nth-child(3) .bgc{background:var(--prugna)}
-.btn{--b1:var(--arancio);--b1t:var(--prugna);--b2:var(--prugna);--b2t:var(--crema);display:inline-block;white-space:nowrap;height:clamp(34px,2.85vw,41px);perspective:700px;font-family:var(--display);font-weight:400;font-size:clamp(24px,2.25vw,32px);line-height:.9;letter-spacing:-.03em;background:none;border:0;padding:0;cursor:pointer;transform:rotate(-.75deg)}
-.btn .blk3{display:grid;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.65,.05,.36,1)}
-.btn .f{grid-area:1/1;display:flex;align-items:center;gap:10px;height:100%;padding:0 .42em;backface-visibility:hidden}
-.btn .f1{background:var(--b1);color:var(--b1t);transform:translateZ(calc(clamp(34px,2.85vw,41px) / 2))}
-.btn .f2{background:var(--b2);color:var(--b2t);transform:rotateX(-90deg) translateZ(calc(clamp(34px,2.85vw,41px) / 2))}
-.btn:hover .blk3,.btn:focus-visible .blk3{transform:rotateX(90deg)}
+/* ---------- Osmo · Button 015 (colori Laaaud: parte arancio, passa dal lilla, arriva al prugna) ---------- */
+:root{
+  --button-015-color:#220227;
+  --button-015-color-background:#FF5A29;
+  --button-015-hover-color:#FFF1E0;
+  --button-015-between-color-background:#A981F2;
+  --button-015-hover-color-background:#220227;
+  --button-015-color-focus:#220227;
+  --button-015-border-radius:2.5em;
+  --button-015-padding:.42em 1.15em .48em;
+  --button-015-focus-inset:-.125em;
+  --button-015-click-scale:.955 .925;
+  --button-015-ease-click:cubic-bezier(.4,0,.2,1);
+  --button-015-ease-hover:cubic-bezier(.19,.69,.33,1.33);
+  --button-015-ease-hover-swift-out:cubic-bezier(.19,.69,.33,1);
+  --button-015-ease-hover-soft-out:cubic-bezier(.215,.61,.355,1);
+  --button-015-ease-focus:cubic-bezier(.32,.72,0,1);
+}
+.button-015{color:var(--button-015-color);-webkit-user-select:none;user-select:none;background-color:#0000;outline-style:none;place-content:center;place-items:center;padding:0;line-height:1;text-decoration:none;display:inline-grid;position:relative;-webkit-tap-highlight-color:transparent;transition:color .15s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click);font-family:var(--text);font-weight:500;font-size:max(16px,1.46vw);white-space:nowrap;border:0;cursor:pointer;rotate:-.7deg}
+.button-015::after{content:'';display:block;position:absolute;inset:var(--button-015-focus-inset);border-radius:var(--button-015-border-radius);transition:box-shadow .3s var(--button-015-ease-focus);pointer-events:none;z-index:1}
+.button-015:is(:focus-visible)::after{box-shadow:0 0 0 .125em var(--button-015-color-focus)}
+.button-015:active{scale:var(--button-015-click-scale)}
+.button-015__bg{background-color:var(--button-015-color-background);border-radius:var(--button-015-border-radius);grid-area:1/1;width:calc(100% - 1px);height:calc(100% - 1px);padding:0}
+.button-015__bg-hover{border-radius:var(--button-015-border-radius);will-change:transform,clip-path;grid-area:1/1;width:calc(100% + .25em);height:calc(100% + .25em);padding:0;clip-path:inset(1.25em 1.25em 1.25em 1.25em round var(--button-015-border-radius));opacity:0}
+.button-015__bg-hover.is--first{background-color:var(--button-015-between-color-background);z-index:1;transition:clip-path .35s var(--button-015-ease-hover),opacity 0s var(--button-015-ease-hover-soft-out)}
+.button-015__bg-hover.is--second{background-color:var(--button-015-hover-color-background);z-index:2;transition:clip-path .35s .05s var(--button-015-ease-hover),opacity .1s .1s var(--button-015-ease-hover-soft-out)}
+.button-015__text{width:100%;height:100%;padding:var(--button-015-padding);z-index:3;grid-area:1/1}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){
+  .button-015:is(:hover,:focus-visible),[data-hover]:is(:hover,:focus-visible) .button-015{color:var(--button-015-hover-color);transition:color .15s .2s var(--button-015-ease-hover-soft-out),scale .15s var(--button-015-ease-click)}
+  .button-015:is(:hover,:focus-visible) .button-015__bg-hover.is--first,[data-hover]:is(:hover,:focus-visible) .button-015 .button-015__bg-hover.is--first{clip-path:inset(.125em .125em .125em .125em round var(--button-015-border-radius));opacity:1;transition:clip-path .3s .05s var(--button-015-ease-hover-swift-out),opacity .1s .05s var(--button-015-ease-hover-soft-out)}
+  .button-015:is(:hover,:focus-visible) .button-015__bg-hover.is--second,[data-hover]:is(:hover,:focus-visible) .button-015 .button-015__bg-hover.is--second{clip-path:inset(.125em .125em .125em .125em round var(--button-015-border-radius));opacity:1;transition:clip-path .375s .2s var(--button-015-ease-hover),opacity .1s .2s var(--button-015-ease-hover-soft-out)}
+}
 
 /* ---------- SCENA 7 · CTA giganti + footer ---------- */
 .ctas a{display:flex;align-items:center;justify-content:space-between;gap:3vw;height:16vw;padding:0 2.4vw 0 2.5vw;font-family:var(--display);font-size:9.3vw;line-height:.85;letter-spacing:-.03em;transition:background .5s cubic-bezier(.23,1,.32,1),color .5s}
@@ -232,7 +260,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
   .vicino .t{width:86vw;height:auto;padding:7vw 5vw}.vicino .t h2{font-size:11vw;width:auto}
   .sv-stage{height:auto;padding:calc(var(--navh) + 6vh) var(--m) 8vh}
   .sv-wrap{position:static;transform:none;height:auto}
-  .sv-nav,.sv-ph{display:none}
+  .sv-nav,.sv-ph,.sv-side{display:none}
   .sv-lab-m{display:block;margin-bottom:6vw}.sv-lab-m::before{content:"";display:inline-block;width:8px;height:8px;background:var(--arancio);margin-right:8px;vertical-align:1px}
   .sv-body{position:static;width:auto;gap:9vh}
   .sv-item{grid-area:auto;visibility:visible}
@@ -391,33 +419,33 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
 
 <!-- SCENA 6 -->
 <section class="servizi" id="servizi" data-bg="crema" aria-label="Servizi">
-  <div class="sv-stage" id="svStage"><div class="sv-wrap">
+  <div class="sv-stage" id="svStage"><div class="sv-side" aria-hidden="true"></div><div class="sv-wrap">
     <nav class="sv-nav" aria-label="Servizi">
-      <span class="mono sv-lab">Servizi · scegli il tuo pacchetto</span>
+      <span class="mono sv-lab">servizi:</span>
       <button class="on"><b>01</b>Sul territorio</button>
       <button><b>02</b>Protagonista</button>
       <button><b>03</b>Campioni</button>
       <div class="sv-bar"><i id="svBar"></i></div>
     </nav>
-    <span class="mono sv-lab sv-lab-m" aria-hidden="true">Servizi · scegli il tuo pacchetto</span>
+    <span class="mono sv-lab sv-lab-m" aria-hidden="true">servizi:</span>
     <div class="sv-body">
       <article class="sv-item on" style="--ph:url(img/sv1.jpg)">
         <span class="split"><h3>Creator sul territorio</h3></span>
         <span class="split"><p class="d">Un creator della tua zona viene da te, gira sul posto e ti consegna i contenuti pronti. Tu continui a lavorare.</p></span>
         <ul><li>Creator scelto nella tua zona</li><li>Riprese sul posto, in una giornata</li><li>Video pronti per i tuoi canali</li></ul>
-        <div class="meta"><a class="btn" href="#ctas" data-open-panel>let’s start</a><span>a partire da € —</span></div>
+        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
       <article class="sv-item" style="--ph:url(img/sv2.jpg)">
         <span class="split"><h3>Diventa il protagonista</h3></span>
         <span class="split"><p class="d">Ci metti la faccia tu. Noi ti affianchiamo in tutto, dall’idea al canale.</p></span>
         <ul><li>Format e testi su misura</li><li>Riprese e montaggio</li><li>Gestione del tuo canale</li></ul>
-        <div class="meta"><a class="btn" href="#ctas" data-open-panel>let’s start</a><span>a partire da € —</span></div>
+        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
       <article class="sv-item" style="--ph:url(img/p7.jpg)">
         <span class="split"><h3>Gestione campioni</h3></span>
         <span class="split"><p class="d">Ci affidi i prodotti, li mandiamo ai creator in tutta Italia e loro li raccontano a casa loro.</p></span>
         <ul><li>Creator scelti per zona</li><li>Spedizioni e logistica</li><li>Contenuti da tutta Italia</li></ul>
-        <div class="meta"><a class="btn" href="#ctas" data-open-panel>let’s start</a><span>a partire da € —</span></div>
+        <div class="meta"><a data-button-015="" href="#ctas" class="button-015" data-open-panel><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">let’s start</span></a><span>a partire da € —</span></div>
       </article>
     </div>
     <div class="sv-ph" aria-hidden="true"><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/sv1.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/sv2.jpg" alt=""></span></figure><figure class="sv-card"><i class="bgc"></i><span class="im"><img src="img/p7.jpg" alt=""></span></figure></div>
@@ -454,7 +482,7 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
       <label for="f3" class="biz">Azienda<input id="f3"></label>
       <label for="f4">Email<input id="f4" type="email"></label>
       <label for="f5" class="biz">Sede aziendale<input id="f5"></label>
-      <button class="btn" type="submit">invia</button>
+      <button data-button-015="" class="button-015" type="submit"><span class="button-015__bg"></span><span class="button-015__bg-hover is--first"></span><span class="button-015__bg-hover is--second"></span><span class="button-015__text">invia</span></button>
       <p class="ok" id="ok" role="status">Grazie! È una demo: il modulo non invia ancora nulla.</p>
     </form>
   </div>
@@ -531,8 +559,6 @@ body:has( [data-cursor]:hover) .cursor.cursor--echo1{background-color:rgba(169,1
   addEventListener('keydown', e => { if (e.key === 'Escape') { panel.classList.remove('open'); toggleMenu(false); } });
   $('#form').addEventListener('submit', e => { e.preventDefault(); $('#ok').classList.add('show'); });
 
-  /* Bottoni: blocco 3D che ruota in hover (rif. Rechabite) */
-  $$('.btn').forEach(b => { const t = b.innerHTML; b.innerHTML = `<span class="blk3"><span class="f f1">${t}</span><span class="f f2" aria-hidden="true">${t}</span></span>`; });
   /* CTA giganti: sempre su una riga, stessa misura */
   const fitCtas = () => { const as = $$('.ctas a'); as.forEach(a => a.style.fontSize = ''); let f = Infinity;
     as.forEach(a => { const t = $('.t', a), c = $('.cube', a), cs = getComputedStyle(a); const avail = a.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - c.offsetWidth - (parseFloat(cs.columnGap) || 0); f = Math.min(f, parseFloat(cs.fontSize) * Math.min(1, avail * .96 / t.scrollWidth)); });
